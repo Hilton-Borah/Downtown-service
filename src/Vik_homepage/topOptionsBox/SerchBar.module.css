@@ -1,0 +1,33 @@
+.main{
+    height: 550px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://camo.githubusercontent.com/7ddf3ca05d62e883b70a9dd91da383dc2031dd313e0585a6c8c02e1b781559b4/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f696d616765732f67726f7774682f686f6d652d73637265656e2f313631353337353738323833382d6638393066382e6a706567");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.topLogoSection{
+    width: 90%;
+    border: 1px solid red;
+    margin: auto ;
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topLogoSection>img{
+    width: 70px;
+    border-radius: 5px;
+}
+
+.register{
+    display: flex;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+.searchBox{
+    border: 1px solid red;
+    margin-top: 200px;
+}
+
