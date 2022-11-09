@@ -1,23 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
+import MensSaloon from './Kiran_Fw19_0321/MensPage';
+import SaloonPrime from './Kiran_Fw19_0321/MensPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MensSaloon/>
+      {/* <SaloonPrime/> */}
     </div>
   );
 }
