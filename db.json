@@ -1,0 +1,82 @@
+{
+  "men": [
+    {
+      "name": "Haircut + Beard Grooming + Relaxing Head Massage",
+      "star": "4.75",
+      "total_rating": "178k",
+      "discount_price": "499",
+      "original_price": "549",
+      "duration": "1 hour",
+      "details1": "Men's haircut",
+      "details2": "Beard shape & styles",
+      "details3": "10 min head massage",
+      "image": "https://res.cloudinary.com/urbanclap/image/upload/t_medium_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631190374864-78f3e8.jpeg",
+      "id": 1
+    },
+    {
+      "name": "Haircut + Hair Color",
+      "star": "4.84",
+      "total_rating": "198.5k",
+      "discount_price": "479",
+      "original_price": "579",
+      "duration": "1 hr and 3 mins",
+      "details1": "Gamier Color Naturals",
+      "details2": "Men's Haircut",
+      "details3": "Hand Detan Pack",
+      "image": "https://res.cloudinary.com/urbanclap/image/upload/t_medium_res_template,q_auto:low,f_auto/w_96,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1651735873259-9ad829.png",
+      "id": 2
+    },
+    {
+      "name": "Haircut + Ralaxing Haed Massage",
+      "star": "4.35",
+      "total_rating": "112.7k",
+      "discount_price": "379",
+      "original_price": "439",
+      "duration": "1 hr and 30 mins",
+      "details1": "Gamier Color Naturals",
+      "details2": "Men's Haircut",
+      "details3": "30 min Haed Massage",
+      "image": "https://res.cloudinary.com/urbanclap/image/upload/t_medium_res_template,q_auto:low,f_auto/w_96,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1663915861272-1221a5.jpeg",
+      "id": 3
+    },
+    {
+      "name": "Kid's Hair Cut",
+      "star": "4.85 ",
+      "total_rating": "119.5k",
+      "discount_price": "219",
+      "original_price": "399",
+      "duration": "30 min",
+      "details1": "Suitable haircut as per the face shape & preference",
+      "details2": "We send professionals who are comfortable with working with kids",
+      "details3": "Pre service consultation and proper cleanup after service",
+      "image": "https://res.cloudinary.com/urbanclap/image/upload/t_medium_res_template,q_auto:low,f_auto/w_96,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1615976235101-6d6cc1.jpeg",
+      "id": 4
+    },
+    {
+      "name": "Make Your Own Package",
+      "star": "4.83",
+      "total_rating": "138.6k",
+      "discount_price": "1249",
+      "original_price": "1499",
+      "duration": "2 hrs 5 mins",
+      "details1": "Gamier Color Naturals",
+      "details2": "Suitable haircut as per the face shape & preference",
+      "details3": "Beard Shape and Styles",
+      "image": "https://res.cloudinary.com/urbanclap/image/upload/t_medium_res_template,q_auto:low,f_auto/w_96,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1629192918292-196558.jpeg",
+      "id": 5
+    },
+    {
+      "name": "Hair Cut + Free Detan",
+      "star": "4.1",
+      "total_rating": "98.2k",
+      "discount_price": "749",
+      "original_price": "999",
+      "duration": "1 hrs 20 mins",
+      "details1": "Anti-pollution Cleanup",
+      "details2": "Oil Reduction Cleanup",
+      "details3": "Face & Neck Detan Pack",
+      "image": "https://res.cloudinary.com/urbanclap/image/upload/t_medium_res_template,q_auto:low,f_auto/w_96,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1640852398247-6bb793.png",
+      "id": 6
+    }
+  ]
+}
