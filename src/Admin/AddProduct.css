@@ -1,0 +1,134 @@
+.hNav{
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.hLogo{
+    width: 50px;
+    height: 50px;
+}
+
+.hTextUser{
+font-size: 18px;
+}
+
+.hTextAdmin{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-weight: 600;
+    align-items: center;
+}
+
+.hFlexButtonHome{
+    width: 30%;
+    /* border: 1px; */
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.hFlexButtonHome button{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    font-size: 17px;
+    color: antiquewhite;
+    background-color: rgb(39, 59, 161);
+    cursor: pointer;
+    /* margin-top: 10px; */
+}
+
+.hFlexButtonHome button:hover{
+    background-color: rgb(59, 83, 205);
+
+}
+
+.hText2Admin{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+    /* margin-bottom: 20px; */
+}
+
+.hFlexAdmin{
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+}
+
+.hSelectAdmin{
+    text-align: center;
+    border: 0.5px solid rgb(148, 148, 148);
+    padding: 5px;
+    padding-bottom: 10px;
+}
+
+.hSelectAdmin::placeholder{
+    padding-left: 200px;
+}
+
+
+.hInputAdmin{
+    border: 0.5px solid rgb(148, 148, 148);
+    width: 60%;
+    text-align: center;
+    /* height: 30px; */
+    padding: 7px;
+    margin-bottom: 15px;
+    /* padding-left: 20px; */
+}
+
+.hInputAdmin::placeholder{
+    padding-left: 10px;
+}
+
+.hFlexAdmintwo{
+    width: 100%;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.hInputAdmintwo{
+    border: 0.5px solid rgb(148, 148, 148);
+    padding: 7px;
+    text-align: center;
+}
+
+.hInputAdmintwo::placeholder{
+    padding-left: 10px;
+}
+
+.hButtonInput{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 17px;
+    color: antiquewhite;
+    background-color: rgb(39, 59, 161);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.hButtonInput:hover{
+    background-color: rgb(59, 83, 205);
+}
+
+.hIframeAdmin iframe{
+    width: 680px;
+    height: 680px;
+}
+
+/* .hForm{
+    border: 1px solid black;
+}
+
+.hFormLabel{
+ border: 1px solid;
+}  */
