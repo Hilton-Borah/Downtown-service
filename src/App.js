@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import LaptopRepair from './Components/Laptop/Plumber';
+import Plumber from './Components/Ankit/Plumber';
+import Electricians from './Components/Ankit/Electricians';
 
 function App() {
   return (
     <div className="App">
-      <LaptopRepair/>
+      {/* <Plumber/> */}
+      <Electricians/>
     </div>
   );
 }

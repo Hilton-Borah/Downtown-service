@@ -1,0 +1,67 @@
+.offerRightSection{
+    margin-top: 20px;
+    background-color: rgb(223, 219, 219);
+    cursor: pointer;
+    border-radius: 10px;
+    height: 50px;
+    padding-left: 15px;
+    padding-top: 5px;
+    width: 80%;
+    border: none;
+}
+.offerHeading{
+    text-align: left;
+    font-weight: bold;
+}
+.offerText{
+    text-align: left;
+    font-size: 14px;
+    color: grey;
+
+}
+.rightContainer{
+    margin-bottom: 40px;
+    gap: 10px;
+    margin-top: 40px;
+}
+.scroll{
+    height: 500px;
+    overflow-y: scroll;
+
+     /* -ms-overflow-style: none;  
+      scrollbar-width:none; */
+      /* overflow: scroll; */
+}
+.scroll::-webkit-scrollbar {
+    display: none;
+}
+.quick{
+    /* width: 90%; */
+    display:grid;
+    grid-template-columns: repeat(12,auto);
+    row-gap: 30px;
+}
+@media screen and (min-width: 100px) and (max-width: 767px){
+    .rightContainer{
+        display: none!important;
+
+    }
+    .quick{
+        /* width: 90%; */
+        display:grid;
+        grid-template-columns: repeat(3,auto);
+        row-gap: 30px;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .rightContainer{
+        display: none!important;
+        
+    }
+    .quick{
+        /* width: 90%; */
+        display:grid;
+        grid-template-columns: repeat(4,auto);
+        row-gap: 30px;
+    }
+}
