@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { VStack, Box, HStack, Button, Heading, Text } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
@@ -6,23 +6,25 @@ import styles from "./electricians.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getElectricianData } from "../../Redux/action";
+import ProductCard from "./ProductCard";
 // import { store } from "../../Redux/store";
 
 const Electricians = () => {
-
+// const [admin, setAdmin]=useState(false);
 const dispatch = useDispatch();
 const products = useSelector(store=>store.products);
 
 useEffect(()=>{
     dispatch(getElectricianData)
 },[])
-console.log(products)
+// console.log(admin)
 
     return <div>
         <VStack spacing="25px">
             <Box w="75%" h="200px" 
             // border="1px solid green"
             >
+                {/* left top heading */}
                 <HStack>
                     <Box textAlign="left" w="50%" h="200px" 
                     // border="1px solid grey"
@@ -30,10 +32,13 @@ console.log(products)
                         <Button mt="20px" mb="10px" bg="white" color="black" border="1px solid grey">🛡UC safe</Button>
                         <Heading h="30px">Electricians</Heading>
                         <Text color="grey" mt="20px">★ 4.76 (347K)</Text>
-                        <Text color="grey" >🛒144 bookings ths year in Kucha Mahajani</Text>
+                        <Text color="grey" >🛒144 bookings this year in Kucha Mahajani</Text>
                     </Box>
                 </HStack>
-
+                {/* <div>
+                    <Button onClick={()=>setAdmin(true)}>Admin</Button>
+                    <Button onClick={()=>setAdmin(false)}>User</Button>
+                </div> */}
                 <Box mt="20px" w="100%" h="5px" bg="lightgrey"></Box>
 
                 <Box className={styles.quick}
@@ -114,50 +119,68 @@ console.log(products)
                     </Box> 
 
                 </Box>
-                <Box>
-                </Box>
 
                 <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
 
                 <HStack 
                 // border="1px solid red"
+                justifyContent="space-between"
                 >
                     {/* left side */}
-                    <Box w="60%" h="400px"
-                    //  border="1px solid black"
-                     >
-
+                    <Box w="55%" h="400px">
                             <Heading pt="30px" pb="30px" size="lg" textAlign="left">Quick booking</Heading>
                             <Box className={styles.scroll}
                             // border="1px solid green"
                              textAlign="left">
                                {products.map((item)=>{
-                                return <div>
-                                    <Box p="5px" w="100%" h="200px" 
-                                    // border="1px solid grey"
-                                    >
-                                       <Heading size="md">{item.name}</Heading> 
-                                       <Text>★{item.star} ({item.total_rating})</Text>
-                                       <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
-                                       <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
+                                return <ProductCard {...item}/>
+                                // <div style={{display:"flex"}}>
+                                //     <Box p="5px" w="100%" h="200px" 
+                                //     // border="1px solid grey"
+                                //     mb="10px" 
+                                //     key={item.id}
+                                //     // borderLeft="none" borderRight="none"
+                                //     >
+                                //        <Heading size="md">{item.name}</Heading> 
+                                //        <Text>★{item.star} ({item.total_rating})</Text>
+                                //        <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
+                                //        <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
                                     
-                                    <li>{item.details1}</li>
-                                    <li>{item.details2}</li>
-                                    </Box>
+                                //     <li>{item.details1}</li>
+                                //     <li>{item.details2}</li>
+                                //     </Box>
+                                //     <Box>
+                                //         <Image h="100px" w="100px" src={item.image}/>
+                                //         {admin ? 
+                                //         <Box display="flex" mt="10px" gap="5px">
+                                //             <Button fontSize="14px" h="30px" w="30px" color="white" bg="green.500" >Add</Button>
+                                //             <Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button>
+                                //             {/* <Button bgColor="red.500" h="30px" w="50px"> */}
+                                //                 <Image cursor="pointer" h="30px" w="50px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/lg/307/wastebasket_1f5d1-fe0f.png"/>
+                                //             {/* </Button>  */}
+                                //         </Box> :
+                                //         <Box display="flex" mt="10px" gap="5px">
+                                //         <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" >Add</Button>
+                                        
+                                //     </Box> }
+                                       
+                                //     </Box>
                                     
-                                </div>
+                                // </div>
                                })}
                             </Box>
-
+<Box>
+    <Button mt="5px" ml="610px" color="white" bgColor="red.500">Next ↓</Button>
+</Box>
                     </Box>
-                    
                     {/* right side */}
-                    <Box w="40%" h="auto"
+                    <Box w="35%" h="auto"
                     //  border="1px solid blue" 
                      >
                         <VStack className={styles.rightContainer} 
                         >
                             <Box className={styles.offerRightSection}>
+                                {/* <Image w="10px" h="10px" src="https://s3.amazonaws.com/freestock-prod/450/freestock_565266637.jpg"></Image> */}
                                 <Text className={styles.offerHeading} >Save 15% on every order</Text>
                                 <Text className={styles.offerText}>Get Plus now</Text>
                             </Box>
@@ -182,7 +205,7 @@ console.log(products)
                 </HStack>
             </Box>
         </VStack>
-        
+        {/* <Box>Next</Box> */}
     </div>
 }
 export default Electricians;

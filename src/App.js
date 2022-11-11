@@ -6,8 +6,8 @@ import Electricians from './Components/Ankit/Electricians';
 function App() {
   return (
     <div className="App">
-      {/* <Plumber/> */}
-      <Electricians/>
+      <Plumber/>
+      {/* <Electricians/> */}
     </div>
   );
 }
