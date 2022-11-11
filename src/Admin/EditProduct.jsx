@@ -5,7 +5,7 @@ import { postData } from '../Redux/action'
 import { IoIosArrowDown } from "react-icons/io"
 import { AiOutlineArrowRight } from "react-icons/ai"
 // import {AiFillHome} from "react-icons/ai"
-import "../Admin/AddProduct.css"
+import "../Admin/EditProduct.css"
 
 const initialState = {
     name: "",
@@ -20,7 +20,7 @@ const initialState = {
     image: ""
 }
 
-const AddProduct = () => {
+const EditProduct = () => {
     const dispatch = useDispatch()
     const [input, setInput] = useState(initialState);
     const [category, setCategory] = useState("")
@@ -57,27 +57,26 @@ const AddProduct = () => {
             <Divider border={"1px solid lightgray"} width={"95%"} margin={"auto"} />
 
             <Box className='hHeaderFirst'>
-                <Text className='hTextAdmin'>Hai User you can control this site from here</Text>
+                <Text className='hTextAdmin'>Hai User you can Edit this site from here</Text>
                 <Flex className='hFlexButtonHome'>
-                    <Button variant={"unstyled"} >Go to edit page</Button>
+                    <Button variant={"unstyled"} >Go to Add page</Button>
                     <Button variant={"unstyled"} >Go to Homepage</Button>
                 </Flex>
             </Box>
 
             <Box className='hFlexAdmin'>
                 <Box className='hIframeAdmin'  >
-                    <Image src="https://user-images.githubusercontent.com/103739534/201345471-5bffca28-2ad5-4011-9f89-c1640e68fe71.gif" />
+                    <Image src="https://user-images.githubusercontent.com/103739534/201341822-e9b97ee7-1510-406c-b3fe-2288c2e89aaf.gif" />
                 </Box>
-                
                 <form onSubmit={handleSubmit} className={"hForm"}>
                     <Flex width={"100%"} justifyContent={"space-between"} mb={"20px"}>
-                        <Flex className='hText2Admin'><Text>Add a new service</Text><AiOutlineArrowRight /></Flex>
-                        <Select w={["45%","43%","40%"]} variant={"unstyles"} className='hSelectAdmin' value={category} placeholder='Category' onChange={(e) => setCategory(e.target.value)} required>
+                        <Flex className='hText2Admin'><Text>Edit the service</Text><AiOutlineArrowRight /></Flex>
+                        {/* <Select w={["45%","43%","40%"]} variant={"unstyles"} className='hSelectAdmin' value={category} placeholder='Category' onChange={(e) => setCategory(e.target.value)} required>
                             <option value={"men"}>Salon for men</option>
                             <option value={"women"}>Salon for women</option>
                             <option value={"electrician"}>Electricians</option>
                             <option value={"plumber"}>Plumber</option>
-                        </Select>
+                        </Select> */}
                     </Flex>
 
                     {/* <FormLabel className='hFormLabel'>Name</FormLabel> */}
@@ -115,7 +114,7 @@ const AddProduct = () => {
                     <Input className='hInputAdmin' variant={"unstyled"} type='text' placeholder='Enter service details 3' onChange={handleChange} value={details3} name={"details3"} />
                     {/* <FormLabel className='hFormLabel'>Image</FormLabel> */}
                     <Input className='hInputAdmin' variant={"unstyled"} type='link' placeholder='Enter service image' onChange={handleChange} value={image} name={"image"} /><br />
-                    <input className='hButtonInput' type="submit" value="Add service" />
+                    <input className='hButtonInput' type="submit" value="Edit service" />
                 </form>
 
 
@@ -124,4 +123,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct
+export default EditProduct

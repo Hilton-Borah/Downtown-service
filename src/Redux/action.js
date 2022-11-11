@@ -17,7 +17,6 @@ const postData = (data,category) => (dispatch) => {
 }
 
 
-
 export {postData}
 
 
