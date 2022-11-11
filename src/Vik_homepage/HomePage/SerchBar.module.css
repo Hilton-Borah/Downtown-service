@@ -33,7 +33,7 @@
 }
 
 .searchBox{
-    margin-top: 100px;
+    margin: 100px 0px;
 }
 
 .personalServ{
@@ -108,6 +108,7 @@
     margin: 50px auto;
     display: flex;
     flex-wrap: wrap;
+    row-gap: 10px;
 }
 .NewCatLaunch>div{
     width: 290px;

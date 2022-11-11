@@ -1,10 +1,10 @@
 import './App.css';
-import SearchBar from './Vik_homepage/topOptionsBox/SearchBar';
+import HomePage from './Vik_homepage/HomePage/HomePage';
 
 function App() {
   return (
     <div className="App">
-      <SearchBar/>
+      <HomePage/>
     </div>
   );
 }

@@ -84,10 +84,5 @@ const SearchLoc = () => {
   );
 };
 
-// const SearchBox=()=>{
-//     return(
-
-//     )
-// }
 
 export default SearchLoc;
