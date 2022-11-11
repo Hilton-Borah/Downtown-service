@@ -15,7 +15,7 @@ const HomePage = () => {
     <>
       <div className={styles.main}>
         <div className={styles.topLogoSection}>
-          <img style={{marginTop:"-10px"}}
+          <img style={{marginTop:"-10px",cursor:"pointer"}}
             src="https://user-images.githubusercontent.com/105915325/201094672-f7cd637a-98b8-4f0e-b0f4-78b4890e4976.png"
             alt="Web-Site Logo"
           />
@@ -29,7 +29,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className={styles.searchBox}>
-          <p style={{fontSize:"14px"}}>Home / Delhi-Ncr</p>
+          <p style={{fontSize:"14px"}}>Home / India</p>
           <b style={{ fontSize: "50px",fontFamily:"sans-serif"}}>Home services, on demand.</b>
           <div style={{ marginTop: "20px" }}>
             <SearchLoc />

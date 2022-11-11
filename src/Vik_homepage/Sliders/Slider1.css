@@ -2,7 +2,7 @@
     /* background-color: red; */
     width: 100px;
     height: 100px;
-    color: rgb(148, 141, 141);
+    color: rgb(179, 173, 173);
     font-size: 50px;
     margin-left: -200%;
     z-index: 2;
@@ -14,7 +14,7 @@
     margin-left: 4100%;
     font-size: 50px;
     /* display: none; */
-    color: rgb(148, 141, 141);
+    color: rgb(179, 173, 173);
     justify-content: flex-end;
 }
 
