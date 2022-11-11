@@ -1,6 +1,7 @@
 import "./payment.css";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import DebitModal from "./ModCompo/debitModal";
 
 const Payment = () => {
   return (
@@ -20,12 +21,14 @@ const Payment = () => {
           <p>Amount to pay:{`Rs ${1000}`}</p>
         </div>
       </div>
+      {/* to cover fixed box */}
       <div style={{ width: "40%", height: "76px", color: "#e5e5e5" }}>
         to cover fixed box
       </div>
       {/* payment types */}
       <div className="payType">
         <b>Debit or Credit card</b>
+        <DebitModal>
         <div className="imgBox">
           <div>
             <img
@@ -36,6 +39,7 @@ const Payment = () => {
           </div>
           <MdKeyboardArrowRight fontSize="20px" />
         </div>
+        </DebitModal>
       </div>
       <div className="payType">
         <b>Wallet</b>

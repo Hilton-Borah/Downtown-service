@@ -9,6 +9,7 @@
     background-color: white;
     display: flex;
     column-gap: 20px; 
+    z-index: 1;
 }
 .selectPay>div:nth-child(1){
     margin-top: 10px;
@@ -22,6 +23,9 @@
     color: gray;
 }
 /* payment types */
+.chakra-button{
+    display: none;
+}
 .payType{
     width: 40%;
     height: auto;

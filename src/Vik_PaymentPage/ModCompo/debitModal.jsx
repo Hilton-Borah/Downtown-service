@@ -1,3 +1,4 @@
+import React from 'react';
 import {
     Modal,
     ModalOverlay,
@@ -10,10 +11,12 @@ import {
     Input,
     FormControl,
     FormLabel,
-  } from '@chakra-ui/react'
+  } from '@chakra-ui/react';
+  import { useDisclosure } from "@chakra-ui/react";
+//   import "../payment.css"
 
 
-function DebitModal() {
+function DebitModal({children}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
   
     const initialRef = React.useRef(null)
@@ -21,12 +24,9 @@ function DebitModal() {
   
     return (
       <>
-        <Button onClick={onOpen}>Open Modal</Button>
-        <Button ml={4} ref={finalRef}>
-          I'll receive focus on close
-        </Button>
+        <div  onClick={onOpen}>{children}</div>
   
-        <Modal
+        <Modal 
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
           isOpen={isOpen}
@@ -34,25 +34,26 @@ function DebitModal() {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Create your account</ModalHeader>
-            <ModalCloseButton />
+            <ModalHeader>Add new card</ModalHeader>
+            <ModalCloseButton/>
             <ModalBody pb={6}>
               <FormControl>
-                <FormLabel>First name</FormLabel>
-                <Input ref={initialRef} placeholder='First name' />
+                {/* <FormLabel>First name</FormLabel> */}
+                <Input ref={initialRef} type="number" placeholder='card number' />
               </FormControl>
   
               <FormControl mt={4}>
-                <FormLabel>Last name</FormLabel>
-                <Input placeholder='Last name' />
+                {/* <FormLabel>Last name</FormLabel> */}
+                <Input w="100px" mr="10px" type="number" placeholder='MM/YY' />
+                <Input w="100px" type="number" placeholder='CVV' />
               </FormControl>
             </ModalBody>
   
             <ModalFooter>
-              <Button colorScheme='blue' mr={3}>
-                Save
+              <Button colorScheme='blue' mr={3}> 
+                Save and Proceed
               </Button>
-              <Button onClick={onClose}>Cancel</Button>
+              {/* <Button onClick={onClose}>Cancel</Button> */}
             </ModalFooter>
           </ModalContent>
         </Modal>
