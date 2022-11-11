@@ -1,11 +1,20 @@
-import React from "react";
-import { VStack, Box, HStack, Button, Stack, Text } from "@chakra-ui/react"
+import React, { useEffect } from "react";
+import { VStack, Box, HStack, Button, Stack, Text ,Heading} from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-
+import styles from "./mensPage.module.css"
+import { getDatam } from "../Redux/action";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const MensSaloon = () => {
+    const dispatch = useDispatch()
+    const products = useSelector((state) => state.products)
+
+    useEffect(() => {
+        dispatch(getDatam)
+    }, [])
+    console.log(products)
     return <div>
         <VStack spacing="25px" >
             <Box w="75%" h="500px"    >
@@ -91,7 +100,29 @@ const MensSaloon = () => {
 
                 </HStack>
                 <HStack spacing="25px" borderTop="2px solid gray">
-                    <Box w="60%" h="600px" border="1px solid red" borderRight="1px solid gray">
+                    <Box w="60%" h="600px" borderRight="1px solid gray">
+                    <Heading pt="30px" pb="30px" size="lg" textAlign="left">BestSeller Packages</Heading>
+                        <Box
+                            className={styles.scrols}
+                            // border="1px solid green"
+                            textAlign="left">
+                            {products && products.map((item) => {
+                                return <div>
+                                    <Box p="5px" w="100%" h="200px"
+                                    // border="1px solid grey"
+                                    >
+                                        <Heading size="md">{item.name}</Heading>
+                                        <Text>★{item.star} ({item.total_rating})</Text>
+                                        <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
+                                        <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
+
+                                        <li>{item.details1}</li>
+                                        <li>{item.details2}</li>
+                                    </Box>
+
+                                </div>
+                            })}
+                        </Box>
 
                     </Box>
                     <Box w="40%" h="400px" >

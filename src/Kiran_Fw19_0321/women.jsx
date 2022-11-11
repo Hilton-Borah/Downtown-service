@@ -1,21 +1,21 @@
 import React from "react";
-import { VStack, Box, HStack,Text,Heading} from "@chakra-ui/react"
+import { VStack, Box, HStack, Text, Heading } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-import {useDispatch, useSelector} from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react";
 import { getData } from "../Redux/action";
-import ProductCard from "../Components/ProductCard";
+import styles from "./women.module.css"
 
 
 
 const SaloonPrime = () => {
     const dispatch = useDispatch()
-    const products=useSelector((state)=>state.products)
-    
-    useEffect(()=>{
+    const products = useSelector((state) => state.products)
+
+    useEffect(() => {
         dispatch(getData)
-    },[])
+    }, [])
     console.log(products)
     return <div>
         <VStack spacing="25px">
@@ -81,19 +81,31 @@ const SaloonPrime = () => {
                     </Box>
 
                 </HStack>
-                <HStack spacing="25px"  paddingTop="30px" >
-                    <Box w="60%" h="400px" border="1px solid red" borderRight="1px solid gray">
-                         {/* { products.map((item)=>{
-                            return(
-                                <ProductCard {...item} key={item.id}/>
-                                // <Box key={item.id}>
-                                //   <Heading>{item.name}</Heading>
-                                //   <Text>{item.star}{item.total_rating}</Text>
+                <HStack spacing="25px" paddingTop="30px" >
+                    <Box w="60%" h="600px" borderRight="1px solid gray">
+                        <Heading pt="30px" pb="30px" size="lg" textAlign="left">BestSeller Packages</Heading>
+                        <Box
+                            className={styles.scrolls}
+                            // border="1px solid green"
+                            textAlign="left">
+                            {products && products.map((item) => {
+                                return <div>
+                                    <Box p="5px" w="100%" h="200px"
+                                    // border="1px solid grey"
+                                    >
+                                        <Heading size="md">{item.name}</Heading>
+                                        <Text>★{item.star} ({item.total_rating})</Text>
+                                        <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
+                                        <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
 
-                                // </Box>
-                            )
-                         })
-                         } */}
+                                        <li>{item.details1}</li>
+                                        <li>{item.details2}</li>
+                                    </Box>
+
+                                </div>
+                            })}
+                        </Box>
+
                     </Box>
                     <Box w="40%" h="400px" >
                         {/* <AspectRatio maxW='400px' ratio={1}>

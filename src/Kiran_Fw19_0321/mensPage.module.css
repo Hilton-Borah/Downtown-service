@@ -1,0 +1,12 @@
+.scrols {
+    height: 500px;
+    overflow-y: scroll;
+ -ms-overflow-style: none;  
+      scrollbar-width:none;
+      overflow: scroll;
+
+}
+
+.scrols::-webkit-scrollbar {
+    display: none;
+}
