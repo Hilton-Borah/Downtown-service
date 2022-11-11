@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       {/* <AddProduct/> */}
       {/* <EditProduct/>   */}
-      {/* <SelectSlot/> */}
+      <SelectSlot/>
       {/* <Login/> */}
-      <BasicUsage/>
+      {/* <BasicUsage/> */}
     </div>
   );
 }
