@@ -2,9 +2,30 @@ import React, { useState } from 'react'
 import { VStack, Box, HStack, Button, Heading, Text } from "@chakra-ui/react"
 import { Image } from '@chakra-ui/react'
 
-const ProductCard = (item) => {
-    const [admin, setAdmin]=useState(true);
-    console.log(admin);
+const ProductCard = (item,cost,handleAddPrice, setCost) => {
+    const [admin, setAdmin]=useState(false);
+    // const [cost, setCost] = useState(0)
+    const [count, setCount] = useState(0)
+
+    const money=localStorage.getItem("totalCost")
+    const [total, setTotal] = useState(cost)
+    
+    // console.log(admin);
+    console.log("cost:",cost);
+
+    // const handleAddPrice=(p)=>{
+    //     setCost(cost=>cost+Number(p))
+    //     setCount(count+1)
+    //     // setTotal(total+Number(p))
+    //     // localStorage.setItem("totalCost",cost)
+    //     // handleAddTotal(p)
+    //   }
+    // const handleAddTotal=(p)=>{
+    //     // setCost(()=>cost+Number(p))
+    //     // setCount(count+1)
+    //     setTotal(total+Number(p))
+    //   }
+console.log("total:",money)
   return (
     <div style={{display:"flex"}}>
         
@@ -29,11 +50,15 @@ const ProductCard = (item) => {
                                             <Button fontSize="14px" h="30px" w="30px" color="white" bg="green.500" >Add</Button>
                                             <Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button>
                                             {/* <Button bgColor="red.500" h="30px" w="50px"> */}
-                                                <Image cursor="pointer" h="30px" w="50px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/lg/307/wastebasket_1f5d1-fe0f.png"/>
+                                                <Image cursor="pointer" h="30px" w="50px" 
+                                                src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/lg/307/wastebasket_1f5d1-fe0f.png"/>
                                             {/* </Button>  */}
                                         </Box> :
                                         <Box display="flex" mt="10px" gap="5px">
-                                        <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" >Add</Button>
+                                        {count === 0 ? <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500"
+                                         onClick={handleAddPrice(item.original_price)}
+                                         >Add</Button>
+                                        : <Button >{count}</Button>}
                                         
                                     </Box> }
                                        

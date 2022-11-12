@@ -10,13 +10,20 @@ import ProductCard from "./ProductCard";
 // import { store } from "../../Redux/store";
 
 const Electricians = () => {
-// const [admin, setAdmin]=useState(false);
+const [admin, setAdmin]=useState(false);
 const dispatch = useDispatch();
 const products = useSelector(store=>store.products);
+const [cost, setCost] = useState(0)
+const [count, setCount] = useState(0)
 
 useEffect(()=>{
     dispatch(getElectricianData)
 },[])
+
+const handleAddPrice=(p)=>{
+    setCost(()=>cost+Math.floor(p))
+    setCount(count+1)
+  }
 // console.log(admin)
 
     return <div>
@@ -35,10 +42,10 @@ useEffect(()=>{
                         <Text color="grey" >🛒144 bookings this year in Kucha Mahajani</Text>
                     </Box>
                 </HStack>
-                {/* <div>
+                <div>
                     <Button onClick={()=>setAdmin(true)}>Admin</Button>
                     <Button onClick={()=>setAdmin(false)}>User</Button>
-                </div> */}
+                </div>
                 <Box mt="20px" w="100%" h="5px" bg="lightgrey"></Box>
 
                 <Box className={styles.quick}
@@ -133,40 +140,41 @@ useEffect(()=>{
                             // border="1px solid green"
                              textAlign="left">
                                {products.map((item)=>{
-                                return <ProductCard {...item}/>
-                                // <div style={{display:"flex"}}>
-                                //     <Box p="5px" w="100%" h="200px" 
-                                //     // border="1px solid grey"
-                                //     mb="10px" 
-                                //     key={item.id}
-                                //     // borderLeft="none" borderRight="none"
-                                //     >
-                                //        <Heading size="md">{item.name}</Heading> 
-                                //        <Text>★{item.star} ({item.total_rating})</Text>
-                                //        <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
-                                //        <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
+                                return <div
+                                // <ProductCard {...item}/>
+                                 style={{display:"flex"}}>
+                                    <Box p="5px" w="100%" h="200px" 
+                                    // border="1px solid grey"
+                                    mb="10px" 
+                                    key={item.id}
+                                    // borderLeft="none" borderRight="none"
+                                    >
+                                       <Heading size="md">{item.name}</Heading> 
+                                       <Text>★{item.star} ({item.total_rating})</Text>
+                                       <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
+                                       <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
                                     
-                                //     <li>{item.details1}</li>
-                                //     <li>{item.details2}</li>
-                                //     </Box>
-                                //     <Box>
-                                //         <Image h="100px" w="100px" src={item.image}/>
-                                //         {admin ? 
-                                //         <Box display="flex" mt="10px" gap="5px">
-                                //             <Button fontSize="14px" h="30px" w="30px" color="white" bg="green.500" >Add</Button>
-                                //             <Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button>
-                                //             {/* <Button bgColor="red.500" h="30px" w="50px"> */}
-                                //                 <Image cursor="pointer" h="30px" w="50px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/lg/307/wastebasket_1f5d1-fe0f.png"/>
-                                //             {/* </Button>  */}
-                                //         </Box> :
-                                //         <Box display="flex" mt="10px" gap="5px">
-                                //         <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" >Add</Button>
-                                        
-                                //     </Box> }
+                                    <li>{item.details1}</li>
+                                    <li>{item.details2}</li>
+                                    </Box>
+                                    <Box>
+                                        <Image h="100px" w="100px" src={item.image}/>
+                                        {admin ? 
+                                        <Box display="flex" mt="10px" gap="5px">
+                                            <Button fontSize="14px" h="30px" w="30px" color="white" bg="green.500" onClick={()=>handleAddPrice(item.original_price)} >Add</Button>
+                                            <Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button>
+                                            {/* <Button bgColor="red.500" h="30px" w="50px"> */}
+                                                <Image cursor="pointer" h="30px" w="50px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/lg/307/wastebasket_1f5d1-fe0f.png"/>
+                                            {/* </Button>  */}
+                                        </Box> :
+                                        <Box display="flex" mt="10px" gap="5px">
+                                        {count === 0 ? <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" onClick={()=>handleAddPrice(item.original_price)}>Add</Button>
+                                        : <Button onClick={()=>handleAddPrice(item.original_price)}>{count}</Button>}
+                                    </Box> }
                                        
-                                //     </Box>
+                                    </Box>
                                     
-                                // </div>
+                                </div>
                                })}
                             </Box>
 <Box>
@@ -203,6 +211,19 @@ useEffect(()=>{
                         </VStack>
                     </Box>
                 </HStack>
+                {/* cost */}
+                <Box mb="10px" mt="120px" w="28%" 
+                  h="100px" ml="68.5%" 
+                  // bg="grey"
+                  >
+                  <Box bg="gray.100">
+                    <Text p="5px" color="green">Add ₹62 more to save on Min Order Fee</Text>
+                  </Box>
+                      <Box display="flex" p="20px" justifyContent="space-between">
+                            <Heading fontSize="24px">₹{cost}</Heading>
+                            <Button w="150px" h="50px" mt="-10px" color="white" bg="purple.500">View Cart</Button>
+                      </Box>
+                </Box>
             </Box>
         </VStack>
         {/* <Box>Next</Box> */}

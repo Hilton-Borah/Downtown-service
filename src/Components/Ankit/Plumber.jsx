@@ -13,10 +13,15 @@ const Plumbers = () => {
 // const [admin, setAdmin]=useState(false);
 const dispatch = useDispatch();
 const products = useSelector(store=>store.products);
+const [cost, setCost] = useState(0)
 
 useEffect(()=>{
     dispatch(getPlumberData)
 },[])
+
+const handleAddPrice=(p)=>{
+  setCost((cost)=>cost+Number(p))
+}
 // console.log(admin)
 
     return <div>
@@ -130,7 +135,7 @@ useEffect(()=>{
                             // border="1px solid green"
                              textAlign="left">
                                {products.map((item)=>{
-                                return <ProductCard {...item}/>
+                                return <ProductCard {...item} handleAddPrice={handleAddPrice} cost={cost} setCost={setCost}/>
                                })}
                             </Box>
 <Box>
@@ -166,6 +171,19 @@ useEffect(()=>{
                         </VStack>
                     </Box>
                 </HStack>
+                {/* cost */}
+                <Box mb="10px" mt="120px" w="28%" 
+                  h="100px" ml="68.5%" 
+                  // bg="grey"
+                  >
+                  <Box bg="gray.100">
+                    <Text p="5px" color="green">Add ₹62 more to save on Min Order Fee</Text>
+                  </Box>
+                      <Box display="flex" p="20px" justifyContent="space-between">
+                            <Heading fontSize="24px">₹{cost}</Heading>
+                            <Button w="150px" h="50px" mt="-10px" color="white" bg="purple.500">View Cart</Button>
+                      </Box>
+                </Box>
             </Box>
         </VStack>
     </div>
