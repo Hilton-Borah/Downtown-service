@@ -6,8 +6,8 @@ import Payment from './Vik_PaymentPage/payment';
 function App() {
   return (
     <div className="App">
-      {/* <HomePage/> */}
-      <Payment/>
+      <HomePage/>
+      {/* <Payment/> */}
       {/* <DebitModal/> */}
     </div>
   );

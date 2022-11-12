@@ -1,7 +1,7 @@
 import "./payment.css";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import DebitModal from "./ModCompo/debitModal";
+import {DebitModal} from "./ModCompo/debitModal";
 
 const Payment = () => {
   return (

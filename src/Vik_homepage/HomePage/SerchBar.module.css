@@ -31,6 +31,9 @@
     margin-top: 10px;
     gap: 20px;
 }
+.register>div{
+    cursor: pointer;
+}
 
 .searchBox{
     margin: 100px 0px;

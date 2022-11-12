@@ -24,7 +24,7 @@ const HomePage = () => {
             <div style={{ textDecorationLine: "underline" }}>
               Register As A Professional
             </div>
-            <DrawerExample />
+            {/* <DrawerExample /> */}
             <DrawerExample1/>
           </div>
         </div>
