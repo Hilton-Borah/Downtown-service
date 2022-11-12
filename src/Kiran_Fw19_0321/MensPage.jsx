@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { VStack, Box, HStack, Button, Stack, Text ,Heading} from "@chakra-ui/react"
+import { VStack, Box, HStack, Button, Stack, Text, Heading } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import styles from "./mensPage.module.css"
@@ -101,7 +101,7 @@ const MensSaloon = () => {
                 </HStack>
                 <HStack spacing="25px" borderTop="2px solid gray">
                     <Box w="60%" h="600px" borderRight="1px solid gray">
-                    <Heading pt="30px" pb="30px" size="lg" textAlign="left">BestSeller Packages</Heading>
+                        <Heading pt="30px" pb="30px" size="lg" textAlign="left">BestSeller Packages</Heading>
                         <Box
                             className={styles.scrols}
                             // border="1px solid green"
@@ -113,12 +113,17 @@ const MensSaloon = () => {
                                     >
                                         <Heading size="md">{item.name}</Heading>
                                         <Text>★{item.star} ({item.total_rating})</Text>
+                                        <Box gap="15px" display="flex" p="5px" w="20%" h="30px" paddingLeft="500px" >
+                                            <Button>Add</Button>
+                                            <Button>Edit</Button>
+                                        </Box>
                                         <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
                                         <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
 
                                         <li>{item.details1}</li>
                                         <li>{item.details2}</li>
                                     </Box>
+
 
                                 </div>
                             })}
