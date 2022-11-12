@@ -118,7 +118,9 @@ const AddProduct = () => {
                     <input className='hButtonInput' type="submit" value="Add service" />
                 </form>
 
+                {/* fotter */}
 
+                
             </Box>
         </Box>
     )

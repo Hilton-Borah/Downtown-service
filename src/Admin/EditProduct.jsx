@@ -71,12 +71,12 @@ const EditProduct = () => {
                 <form onSubmit={handleSubmit} className={"hForm"}>
                     <Flex width={"100%"} justifyContent={"space-between"} mb={"20px"}>
                         <Flex className='hText2Admin'><Text>Edit the service</Text><AiOutlineArrowRight /></Flex>
-                        {/* <Select w={["45%","43%","40%"]} variant={"unstyles"} className='hSelectAdmin' value={category} placeholder='Category' onChange={(e) => setCategory(e.target.value)} required>
+                        <Select w={["45%","43%","40%"]} variant={"unstyles"} className='hSelectAdmin' value={category} placeholder='Category' onChange={(e) => setCategory(e.target.value)} required>
                             <option value={"men"}>Salon for men</option>
                             <option value={"women"}>Salon for women</option>
                             <option value={"electrician"}>Electricians</option>
                             <option value={"plumber"}>Plumber</option>
-                        </Select> */}
+                        </Select>
                     </Flex>
 
                     {/* <FormLabel className='hFormLabel'>Name</FormLabel> */}

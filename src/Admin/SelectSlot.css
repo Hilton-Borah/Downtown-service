@@ -1,4 +1,51 @@
 .hMainBody{
-    width: 90%;
+    margin: auto;
+    padding: 10px;
 }
+
+.hFirstText{
+    margin: auto;
+    text-align: left;
+}
+
+.hFlexFirst{
+    gap: 20px;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin: auto;
+}
+
+.hFlexFirst button{
+    font-size: 15px;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(149, 149, 149);
+}
+
+.hSecondFlex{
+    background-color: rgb(234, 234, 234);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.hFirstGrid{
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.hFirstGrid button{
+    font-size: 15px;
+    border: 1px solid lightgray;
+}
+
 

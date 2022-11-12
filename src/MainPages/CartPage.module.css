@@ -1,0 +1,35 @@
+.summaryBox{
+    width: 75%;
+    height: 70px;
+    margin: auto;
+    border: 1px solid lightgrey;
+    display: flex;
+    border-left: none;
+    border-right: none;border-top: none;
+}
+.leftandRightBox{
+    width: 75%;
+    height: 700px;
+    margin: auto;
+    /* border: 1px solid lightgrey; */
+    display: flex;
+    gap: 40px;
+}
+.eachSideBox{
+    height: 650px;
+    /* border: 1px solid green; */
+}
+.leftPriceBox{
+    border: 8px solid rgb(244, 243, 243);
+    border-left:none;
+    border-top:none;
+    border-right:none;
+    padding: 1%;display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.priceDetails{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+}
