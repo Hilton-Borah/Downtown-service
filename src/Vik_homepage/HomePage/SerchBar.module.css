@@ -51,21 +51,25 @@
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
-.personalServ>div{
+.personalServ>a{
     width: 20%;
+    border-radius: 5px;
+    
+}
+.personalServ>a>div{
+    width: 100%;
     border-radius: 5px;
     padding: 20px 10px;
     cursor: pointer;
 }
-.personalServ>div:hover{
+.personalServ>a>div:hover{
     background-color: #f5f5f5;
 }
-.personalServ>div>img{
+.personalServ>a>div>img{
     margin: auto;
     width: 35px;
 }
-.personalServ>div>p{
+.personalServ>a>div>p{
     font-size: 13px;
     margin-top: 15px;
 }
@@ -80,20 +84,24 @@
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.homeServ>div{
+.homeServ>a{
     width: 20%;
+    border-radius: 5px;
+}
+.homeServ>a>div{
+    width: 100%;
     border-radius: 5px;
     padding: 20px 10px;
     cursor: pointer;
 }
-.homeServ>div:hover{
+.homeServ>a>div:hover{
     background-color: #f5f5f5;
 }
-.homeServ>div>img{
+.homeServ>a>div>img{
     margin: auto;
     width: 35px;
 }
-.homeServ>div>p{
+.homeServ>a>div>p{
     font-size: 13px;
     margin-top: 15px;
 }
@@ -103,6 +111,7 @@
     height: 160px;
     margin: 70px auto;
 }
+
 
 /* New category Launch */
 .NewCatLaunch{
@@ -121,6 +130,7 @@
     height: 150px;
     margin: auto;
     border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .NewCatLaunch>div>img:hover{
     width: 94%;
@@ -153,6 +163,7 @@
     height: 150px;
     margin: auto;
     border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .appliances>div>img:hover{
     width: 94%;
@@ -211,3 +222,4 @@
     text-align: center;
     align-items: center;
 }
+
