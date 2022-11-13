@@ -11,25 +11,26 @@ import {
     Box,
   } from '@chakra-ui/react'
 import SelectSlot from './SelectSlot'
-import "../Admin/DummyModal.css"
 
 
-function BasicUsage() {
+
+function BasicUsage( {setDummy1,dummy1}) {
+  // const handleClick
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <Box>
-        <Button onClick={onOpen}>Open Modal</Button>
+        <Button onClick={onOpen}>Book a slot</Button>
   
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent className='hModelContent'>
-            <SelectSlot/>
+            <SelectSlot setDummy1={setDummy1} dummy1={dummy1}/>
   
             <ModalFooter>
               <Button colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
-              <Button variant='ghost'>Secondary Action</Button>
+              <Button variant='ghost' onClick={onClose}>continue</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>

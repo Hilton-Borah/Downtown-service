@@ -6,6 +6,8 @@ import { IoIosArrowDown } from "react-icons/io"
 import { AiOutlineArrowRight } from "react-icons/ai"
 // import {AiFillHome} from "react-icons/ai"
 import "../Admin/AddProduct.css"
+import { Link, useNavigate } from 'react-router-dom'
+import { getLocalData } from '../Utils/LocalStorage'
 
 const initialState = {
     name: "",
@@ -21,6 +23,7 @@ const initialState = {
 }
 
 const AddProduct = () => {
+    const navigate=useNavigate()
     const dispatch = useDispatch()
     const [input, setInput] = useState(initialState);
     const [category, setCategory] = useState("")
@@ -39,6 +42,13 @@ const AddProduct = () => {
         alert("Successfully added")
     }
 
+    let username = getLocalData("username")
+
+    const handleLogout=()=>{
+        localStorage.clear()
+        navigate("/")
+    }
+
 
     return (
         <Box>
@@ -49,8 +59,8 @@ const AddProduct = () => {
                         My Profile
                     </MenuButton>
                     <MenuList>
-                        <MenuItem>Username</MenuItem>
-                        <MenuItem>Logout</MenuItem>
+                        <MenuItem>{username}</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
                     </MenuList>
                 </Menu>
             </Flex>
@@ -59,8 +69,8 @@ const AddProduct = () => {
             <Box className='hHeaderFirst'>
                 <Text className='hTextAdmin'>Hai User you can control this site from here</Text>
                 <Flex className='hFlexButtonHome'>
-                    <Button variant={"unstyled"} >Go to edit page</Button>
-                    <Button variant={"unstyled"} >Go to Homepage</Button>
+                    <Link to={"/adminpage/editService"}><Button variant={"unstyled"} >Go to edit page</Button></Link>
+                    <Link to={"/"}><Button variant={"unstyled"} >Go to Homepage</Button></Link>
                 </Flex>
             </Box>
 

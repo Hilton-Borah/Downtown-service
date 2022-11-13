@@ -1,5 +1,5 @@
 import styles from "./SerchBar.module.css";
-import {DrawerExample,DrawerExample1} from "../Small/loginSignDrawer";
+import { DrawerExample, DrawerExample1 } from "../Small/loginSignDrawer";
 import SearchLoc from "../Small/SearchBox";
 import { FaTwitterSquare } from "react-icons/fa";
 import { AiFillFacebook } from "react-icons/ai";
@@ -7,20 +7,17 @@ import { SlSocialInstagram } from "react-icons/sl";
 import { IoLogoYoutube } from "react-icons/io";
 // import { TfiLinkedin } from "react-icons/tf";
 import { BsPinterest } from "react-icons/bs";
-import {SliderImages,SliderImages1} from "../Small/slider1";
-import { getLocalData } from "../Utils/LocalStorage";
-import { Link } from "react-router-dom";
-
+import { SliderImages, SliderImages1 } from "../Small/slider1";
+import { Outlet, Link } from "react-router-dom";
 
 const HomePage = () => {
-
-
 
   return (
     <>
       <div className={styles.main}>
         <div className={styles.topLogoSection}>
-          <img style={{marginTop:"-10px",cursor:"pointer"}}
+          <img
+            style={{ marginTop: "-10px", cursor: "pointer" }}
             src="https://user-images.githubusercontent.com/105915325/201094672-f7cd637a-98b8-4f0e-b0f4-78b4890e4976.png"
             alt="Web-Site Logo"
           />
@@ -30,23 +27,31 @@ const HomePage = () => {
               Register As A Professional
             </div>
             {/* <DrawerExample /> */}
-            <DrawerExample1/>
+            <DrawerExample1 />
           </div>
         </div>
         <div className={styles.searchBox}>
-          <p style={{fontSize:"14px"}}>Home / India</p>
-          <b style={{ fontSize: "50px",fontFamily:"sans-serif"}}>Home services, on demand.</b>
+          <p style={{ fontSize: "14px" }}>Home / India</p>
+          <b style={{ fontSize: "50px", fontFamily: "sans-serif" }}>
+            Home services, on demand.
+          </b>
           <div style={{ marginTop: "20px" }}>
             <SearchLoc />
           </div>
-          <p style={{ margin: "7px 0px 0px 10px", textDecorationLine:"underline" }}>
+          <p
+            style={{
+              margin: "7px 0px 0px 10px",
+              textDecorationLine: "underline",
+            }}
+          >
             Women's Therapies, Salon for Men, Men's Therapies etc.
           </p>
         </div>
       </div>
+
       {/* Personal services options */}
-      <div>
-        <div className={styles.personalServ}>
+      <div className={styles.personalServ}>
+        <Link to={"/womensalon"}>
           <div>
             <img
               src="https://camo.githubusercontent.com/8d2f9c9a0894bd019a356f7c435f25c7d52e6f9eb4e79bfa3450fda1126e1e8b/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313630393735373633353233352d3161313339652e706e67"
@@ -54,6 +59,8 @@ const HomePage = () => {
             />
             <p>Salon For Women</p>
           </div>
+        </Link>
+        <Link to={"/mensalon"}>
           <div>
             <img
               src="https://camo.githubusercontent.com/a8054387e7be3144c087c950da5edf5fa4bdd470333de19e25824cf1b08017af/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313630393735373632393738302d3262323138372e706e67"
@@ -61,6 +68,8 @@ const HomePage = () => {
             />
             <p>Salon For Men</p>
           </div>
+        </Link>
+        <Link>
           <div>
             <img
               src="https://camo.githubusercontent.com/1261860be55d1e98a7bf09fc76469bbd97fd8f1fb9c8f2a2d14971d9262beef0/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f31333132666236302e706e67"
@@ -68,6 +77,8 @@ const HomePage = () => {
             />
             <p>Women's Therapies</p>
           </div>
+        </Link>
+        <Link>
           <div>
             <img
               src="https://camo.githubusercontent.com/bf4dae6391c1bfa7d0889a40d6e9186fcccb4cfdf391c9f319435eb4b9169465/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f737570706c792f637573746f6d65722d6170702d737570706c792f313633353333313630363839342d3762363333662e706e67"
@@ -75,6 +86,8 @@ const HomePage = () => {
             />
             <p>Hair, Skin & Nails</p>
           </div>
+        </Link>
+        <Link>
           <div>
             <img
               src="https://camo.githubusercontent.com/4c053c986d6ccc860c942e875c2be9ff8f3ffd91ec67b2805db572ecf2662868/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313630393735373733313235302d6261333330382e706e67"
@@ -82,8 +95,9 @@ const HomePage = () => {
             />
             <p>Men's Therapies</p>
           </div>
-        </div>
+        </Link>
       </div>
+
       {/* Home sevrvices options */}
       <b
         style={{
@@ -95,20 +109,25 @@ const HomePage = () => {
         Home Services
       </b>
       <div className={styles.homeServ}>
-       <div>
-       <Link to={"/electrician"}><img
+      <Link to={"/electrician"}>
+        <div>
+          <img
             src="https://camo.githubusercontent.com/e6869b7c0a59a2fb769daeaea048a49efe14aaa15334d61c8f54ef235254eeed/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37326431383935302e706e67"
-            alt="App reapir"
-          /></Link>
+            alt="electrician"
+          />
           <p>Electrician</p>
         </div>
+        </Link>
+        <Link to={"/plumber"}>
         <div>
           <img
             src="https://camo.githubusercontent.com/f0355b9be6dac41299e44ca258aaa471b1de075ddc82d83773c8fcbfc861d5e6/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36666261643337302e706e67"
-            alt="home repairs"
+            alt="Plumber"
           />
           <p>Plumber</p>
         </div>
+        </Link>
+        <Link>
         <div>
           <img
             src="https://camo.githubusercontent.com/7a834d6d15a1d60da95e83574bee417d519118cd86b076afc32c3dc64e90e17a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313633313637393531353230362d6136393338392e706e67"
@@ -116,6 +135,8 @@ const HomePage = () => {
           />
           <p>Home Painting</p>
         </div>
+        </Link>
+        <Link>
         <div>
           <img
             src="https://camo.githubusercontent.com/df116cda9e7f290dda56e57f2d2e9238fcf7162b4331582c39574570a74b1f58/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36623166353235302e706e67"
@@ -123,6 +144,8 @@ const HomePage = () => {
           />
           <p>Cleaning & Pest</p>
         </div>
+        </Link>
+        <Link>
         <div>
           <img
             src="https://camo.githubusercontent.com/1270641dc31d58150f341f5e8880e99d86fb82919ea028c7d3325359d2629f4a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313634313231333838363538382d3930613930332e706e67"
@@ -130,13 +153,16 @@ const HomePage = () => {
           />
           <p>Disinfection</p>
         </div>
-
+        </Link>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* Book now */}
       {/* slider-1 */}
-      <div style={{marginBottom:"60px", marginRight:"60px"}} className={styles.NewCatLaunch}>
-        <SliderImages/>
+      <div
+        style={{ marginBottom: "60px", marginRight: "60px" }}
+        className={styles.NewCatLaunch}
+      >
+        <SliderImages />
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* new category lauches */}
@@ -245,8 +271,11 @@ const HomePage = () => {
       >
         Cleaning & Pest Control
       </p>
-      <div style={{marginBottom:"60px", marginRight:"60px"}} className={styles.NewCatLaunch}>
-          <SliderImages1/>
+      <div
+        style={{ marginBottom: "60px", marginRight: "60px" }}
+        className={styles.NewCatLaunch}
+      >
+        <SliderImages1 />
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* Home Repairs */}
@@ -292,19 +321,15 @@ const HomePage = () => {
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* policy screenshot */}
-      <div style={{ width: "100%",cursor:"pointer"}}>
+      <div style={{ width: "100%", cursor: "pointer" }}>
         <img
           style={{ width: "!00%" }}
           src="https://user-images.githubusercontent.com/105915325/201074558-65131c4e-0e61-4b89-a0e8-8d55bcf36842.png"
           alt="Policy box"
         />
       </div>
-
-
-        {/* footer a gaya  */}
-
       <footer className={styles.footer}>
-        <div style={{ margin:"auto"}}>
+        <div style={{ margin: "auto" }}>
           <div>
             <p>About us</p>
             <p>UC Impact</p>
@@ -322,8 +347,8 @@ const HomePage = () => {
             <p>Quick Links</p>
           </div>
         </div>
-        <hr style={{margin:"20px auto"}}/>
-        <p style={{display:"flex", color:"white"}}>Serving in</p>
+        <hr style={{ margin: "20px auto" }} />
+        <p style={{ display: "flex", color: "white" }}>Serving in</p>
         <div>
           <div className={styles.cnty}>USA</div>
           <div>
@@ -393,27 +418,39 @@ const HomePage = () => {
             <p>Riyadh</p>
           </div>
         </div>
-        <hr style={{margin:"20px auto"}}/>
+        <hr style={{ margin: "20px auto" }} />
         <div className={styles.social}>
           <div>
-            <img style={{width:"70px",cursor:"pointer"}} src="https://user-images.githubusercontent.com/105915325/201094672-f7cd637a-98b8-4f0e-b0f4-78b4890e4976.png" alt="site Logo" />
+            <img
+              style={{ width: "70px", cursor: "pointer" }}
+              src="https://user-images.githubusercontent.com/105915325/201094672-f7cd637a-98b8-4f0e-b0f4-78b4890e4976.png"
+              alt="site Logo"
+            />
           </div>
           <div>
             <p>@2014-22 UrbanClap Technologies India Pvt.Ltd.</p>
           </div>
-          <div style={{fontSize:"20px", cursor:"pointer"}}>
-            <FaTwitterSquare/>
-            <AiFillFacebook/>
-            <SlSocialInstagram/>
-            <IoLogoYoutube/>
+          <div style={{ fontSize: "20px", cursor: "pointer" }}>
+            <FaTwitterSquare />
+            <AiFillFacebook />
+            <SlSocialInstagram />
+            <IoLogoYoutube />
             {/* <TfiLinkedin/> */}
-            <BsPinterest/>
+            <BsPinterest />
           </div>
           <div>
-            <img style={{width:"170px", height:"60px",cursor:"pointer"}} src="https://camo.githubusercontent.com/403ae25ba180c2f8af00f39d9c6699f3d4a5fe7edd735e838e2584691449d681/68747470733a2f2f696d616765732e757262616e636c61702e636f6d2f696d6167652f75706c6f61642f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37663930376562302e706e67" alt="google Logo" />
+            <img
+              style={{ width: "170px", height: "60px", cursor: "pointer" }}
+              src="https://camo.githubusercontent.com/403ae25ba180c2f8af00f39d9c6699f3d4a5fe7edd735e838e2584691449d681/68747470733a2f2f696d616765732e757262616e636c61702e636f6d2f696d6167652f75706c6f61642f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37663930376562302e706e67"
+              alt="google Logo"
+            />
           </div>
           <div>
-            <img style={{width:"170px",height:"60px",cursor:"pointer"}} src="https://camo.githubusercontent.com/53975be01f891f87111e50f4ff0d3aefecdd9484b9996357a4cf589627f1cdb3/68747470733a2f2f696d616765732e757262616e636c61702e636f6d2f696d6167652f75706c6f61642f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37663734316431302e706e67" alt="Apple Logo" />
+            <img
+              style={{ width: "170px", height: "60px", cursor: "pointer" }}
+              src="https://camo.githubusercontent.com/53975be01f891f87111e50f4ff0d3aefecdd9484b9996357a4cf589627f1cdb3/68747470733a2f2f696d616765732e757262616e636c61702e636f6d2f696d6167652f75706c6f61642f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37663734316431302e706e67"
+              alt="Apple Logo"
+            />
           </div>
         </div>
       </footer>

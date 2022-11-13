@@ -1,0 +1,79 @@
+.selectPay{
+    width: 40%;
+    position: fixed;
+    margin-left: 30%;
+    padding:15px 20px;
+    background-color: white;
+    display: flex;
+    column-gap: 20px; 
+    z-index: 1;
+}
+.selectPay>div:nth-child(1){
+    margin-top: 10px;
+}
+.selectPay>div>b{
+    font-size: 17px;
+}
+.selectPay>div>p{
+    font-size: 13px;
+    margin-left: -40px;
+    color: gray;
+}
+/* payment types */
+.chakra-button{
+    display: none;
+}
+.payType{
+    width: 40%;
+    height: auto;
+    margin: auto;
+    margin-bottom: 8px;
+    padding: 20px;
+    background-color: white;
+}
+.payType>b{
+    display: flex;
+    margin-bottom: 25px;
+}
+.imgBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    gap: 20px;
+}
+.imgBox>div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.imgBox>div>img{
+    width: 40px;
+    border: 1px solid rgb(207, 202, 202);
+    border-radius: 10px;
+    padding: 0px 3px;
+}
+/* pay after service */
+.afterServ{
+    width: 40%;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+}
+.afterServ>b{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+/* .desc{
+    border: 1px solid green;
+    margin-bottom: 20px;
+} */
+.desc>p:first-child{
+    display: flex;
+    padding-top: 20px;
+}
+.desc>p:last-child{
+    font-size: 13px;
+}

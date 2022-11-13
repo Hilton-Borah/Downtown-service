@@ -5,7 +5,7 @@ import * as types from "./actionTypes"
 
 
 
-const postData = (data,category) => (dispatch) => {
+const postData = (data, category) => (dispatch) => {
     dispatch({ type: types.ADD_PRODUCT_REQUEST })
     axios.post(`https://downtown-service-pda6.onrender.com/${category}`, data)
         .then((res) => {
@@ -20,39 +20,78 @@ const postData = (data,category) => (dispatch) => {
 // import * as types from "./actionTypes"
 // import axios from "axios";
 
- const getElectricianData = (dispatch) => {
-    dispatch({type:types.GET_ELECTRICIAN_DATA_REQUEST})
+const getElectricianData = (dispatch) => {
+    dispatch({ type: types.GET_ELECTRICIAN_DATA_REQUEST })
 
     return axios
-    .get("https://downtown-service-pda6.onrender.com/electrician")
-    .then(r=>{
-        dispatch({
-            type:types.GET_ELECTRICIAN_DATA_SUCCESS,
-            payload:r.data
+        .get("https://downtown-service-pda6.onrender.com/electrician")
+        .then(r => {
+            dispatch({
+                type: types.GET_ELECTRICIAN_DATA_SUCCESS,
+                payload: r.data
+            })
         })
-    })
-    .catch(e=>{
-        dispatch({type:types.GET_ELECTRICIAN_DATA_FAILURE})
-    })  
+        .catch(e => {
+            dispatch({ type: types.GET_ELECTRICIAN_DATA_FAILURE })
+        })
 }
- const getPlumberData = (dispatch) => {
-    dispatch({type:types.GET_ELECTRICIAN_DATA_REQUEST})
+const getPlumberData = (dispatch) => {
+    dispatch({ type: types.GET_ELECTRICIAN_DATA_REQUEST })
 
     return axios
-    .get("https://downtown-service-pda6.onrender.com/plumber")
-    .then(r=>{
-        dispatch({
-            type:types.GET_ELECTRICIAN_DATA_SUCCESS,
-            payload:r.data
+        .get("https://downtown-service-pda6.onrender.com/plumber")
+        .then(r => {
+            dispatch({
+                type: types.GET_ELECTRICIAN_DATA_SUCCESS,
+                payload: r.data
+            })
         })
-    })
-    .catch(e=>{
-        dispatch({type:types.GET_ELECTRICIAN_DATA_FAILURE})
-    })  
+        .catch(e => {
+            dispatch({ type: types.GET_ELECTRICIAN_DATA_FAILURE })
+        })
 }
 
 
-export {postData,getElectricianData,getPlumberData}
+const getData = (dispatch) => {
+    dispatch({ type: types.GET_PRODUCTS_REQUEST })
+    return axios
+        .get("https://downtown-service-pda6.onrender.com/women")
+        .then((res) => {
+            console.log(res.data)
+            dispatch({ type: types.GET_PRODUCTS_SUCCESS, payload: res.data })
+
+        })
+        .catch((err) => {
+            dispatch({ type: types.GET_PRODUCTS_FAILURE })
+        })
+}
+const getDatam = (dispatch) => {
+    dispatch({ type: types.GET_MEN_PRODUCTS_REQUEST })
+    return axios
+        .get("https://downtown-service-pda6.onrender.com/men")
+        .then((res) => {
+            dispatch({ type: types.GET_MEN_PRODUCTS_SUCCESS, payload: res.data })
+
+        })
+        .catch((err) => {
+            dispatch({ type: types.GET_MEN_PRODUCTS_FAILURE })
+        })
+}
+
+
+const loginAuth = (formState) => (dispatch) => {
+    dispatch({type:types.LOGIN_REQUEST})
+    axios.get(`https://verify-email.herokuapp.com/generate/otp/${formState}`)
+        .then((res) => {
+            dispatch({type:types.LOGIN_SUCCESS,payload:res.data})
+        })
+        .catch((err) => {
+            dispatch({type:types.LOGIN_FAILURE})
+        })
+}
+
+
+export { postData, getElectricianData, getPlumberData, getData, getDatam,loginAuth}
 
 
 // const getData=()=>(dispatch)=>{

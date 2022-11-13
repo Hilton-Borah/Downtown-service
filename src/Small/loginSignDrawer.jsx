@@ -17,6 +17,8 @@ import { useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAuth } from "../Redux/action";
 
 
 const initialState = {
@@ -26,18 +28,30 @@ const initialState = {
 }
 
 function DrawerExample1() {
+  const isAuth = useSelector((state) => state.isAuth)
+  const dispatch = useDispatch()
+  const isLoading = useSelector((state) => state.isLoading)
   const toast = useToast()
   const navigate = useNavigate()
   const [formState, setFormState] = React.useState(initialState);
-  const [isLoading, setIsloading] = useState(false)
+  // const [isLoading, setIsloading] = useState(false)
   const [isLoading1, setIsloading1] = useState(false)
   const [check, setCheck] = useState(false);
   const [pin, setPin] = useState("")
   const [response, setresponse] = useState("")
   const [response1, setresponse1] = useState("")
-  const [response1check, setResponse1Check] = useState(false)
+  const [response1check, setResponse1Check] = useState(1)
+
+  const handleLogout = () => {
+    localStorage.clear()
+    // isAuth = false
+    window.location.reload()
+  }
+
+  console.log(isAuth)
 
   const handleChange = (e) => {
+
     const { name, value, type } = e.target;
     const val = type === "number" ? Number(value) : value;
     setFormState({
@@ -49,7 +63,7 @@ function DrawerExample1() {
   const submitData = () => {
     saveLocalData("username", formState.username)
     setCheck(true)
-    setIsloading(true)
+    // setIsloading(true)
 
     toast({
       title: 'OTP sent successfully',
@@ -58,16 +72,18 @@ function DrawerExample1() {
       duration: 9000,
       isClosable: true,
     })
-    axios.get(`https://verify-email.herokuapp.com/generate/otp/${formState.email}`)
-      .then((res) => {
-        setIsloading(false)
-        setresponse(res.data)
-        console.log(res)
-      })
-      .catch((err) => {
-        setIsloading(false)
-        console.log(err)
-      })
+
+    dispatch(loginAuth(formState.email))
+
+    // axios.get(`https://verify-email.herokuapp.com/generate/otp/${formState.email}`)
+    //   .then((res) => {
+    //     setIsloading(false)
+    //     console.log(res)
+    //   })
+    //   .catch((err) => {
+    //     setIsloading(false)
+    //     console.log(err)
+    //   })
   }
 
   const handleChangeSecond = (e) => {
@@ -80,8 +96,11 @@ function DrawerExample1() {
       .then((res) => {
         setIsloading1(false)
         setresponse1(res.data)
-        if (res.data === "OTP Verified Successfully..") {
-          setResponse1Check(true)
+        console.log(res)
+        if (res.data == "OTP Verified Successfully..") {
+          setResponse1Check(2)
+        } else {
+          setResponse1Check(3)
         }
         if (formState.email === "hiltonborah123@gmail.com") {
           navigate("/adminpage")
@@ -97,8 +116,6 @@ function DrawerExample1() {
     setPin("")
   }
 
-
-
   let username = getLocalData("username")
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -106,9 +123,10 @@ function DrawerExample1() {
 
   return (
     <>
-      <Button ref={btnRef} colorScheme="trasparent" onClick={onOpen} mt="-8px">
+      <Button ref={btnRef} colorScheme="trasparent" onClick={() => onOpen()} mt="-8px">
         {username || "Login/Sign Up"}
       </Button>
+      {isAuth ? <b onClick={handleLogout} style={{ cursor: "pointer" }}>Logout</b> : null}
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -167,9 +185,10 @@ function DrawerExample1() {
                   <PinInputField onChange={handleChangeSecond} />
                 </PinInput>
               </HStack>
-                <Box>{response1check ? <Text fontSize={"13px"} mt={"10px"} textAlign="center" color={"green"}>OTP verified. Thanks for joining with us.</Text> : null}</Box>
+                <Box>{response1check === 3 ? <Text fontSize={"13px"} mt={"10px"} textAlign="center" color={"red"}>Wrong OTP. Plaese put the right one.</Text> : null}</Box>
+                <Box>{response1check === 2 ? <Text fontSize={"13px"} mt={"10px"} textAlign="center" color={"green"}>OTP verified. Thanks for joining with us.</Text> : null}</Box>
                 <Box>{isLoading1 ? <Box w={"100%"} ml={"43%"} mt={"20px"}><Spinner /></Box> : null}</Box>
-                <Button disabled={response1check} onClick={handleClick} ml={"30%"} mt={"20px"} fontSize={"14px"} colorScheme="blue">Verify OTP</Button>
+                <Button disabled={response1check === 2} onClick={()=>{handleClick()}} ml={"30%"} mt={"20px"} fontSize={"14px"} colorScheme="blue">Verify OTP</Button>
               </Box> : null
             }
             <Flex justifyContent={"center"}><Button position={"fixed"} top={"660px"} w={"90%"} colorScheme="blue">Log Out</Button></Flex>

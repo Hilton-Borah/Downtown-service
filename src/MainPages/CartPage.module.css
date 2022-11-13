@@ -13,6 +13,7 @@
     margin: auto;
     /* border: 1px solid lightgrey; */
     display: flex;
+    flex-wrap: wrap;
     gap: 40px;
 }
 .eachSideBox{
@@ -24,12 +25,14 @@
     border-left:none;
     border-top:none;
     border-right:none;
-    padding: 1%;display: flex;
+    padding: 1%;
+    display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 .priceDetails{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px 20px 10px 20px;
 }

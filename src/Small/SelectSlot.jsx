@@ -4,7 +4,7 @@ import { BsCreditCard2Front } from "react-icons/bs"
 import "../Admin/SelectSlot.css"
 import { saveLocalData } from '../Utils/LocalStorage'
 
-const SelectSlot = () => {
+const SelectSlot = ({setDummy1,dummy1}) => {
     const [one, setOne] = useState(true);
     const [two, setTwo] = useState(false);
     const [three, setThree] = useState(false);
@@ -19,6 +19,7 @@ const SelectSlot = () => {
         setTwo(false)
         setOne(true)
         setThree(false)
+        updateLocalStoragedate()
     }
 
     const handleTwo = (e) => {
@@ -26,6 +27,7 @@ const SelectSlot = () => {
         setTwo(true)
         setOne(false)
         setThree(false)
+        updateLocalStoragedate()
     }
 
     const handleThree = (e) => {
@@ -33,6 +35,7 @@ const SelectSlot = () => {
         setTwo(false)
         setOne(false)
         setThree(true)
+        updateLocalStoragedate()
     }
 
     // for date
@@ -58,7 +61,9 @@ const SelectSlot = () => {
   
     let handleclickButton=(e)=>{
         setSlot([...slot,e.target.value])
-   
+        // updateLocalStorageSlot()
+
+        setDummy1(!dummy1)
         setState(true)
         setCount(count+1)
         if (count===1){
@@ -93,8 +98,7 @@ const SelectSlot = () => {
 
     useEffect(()=>{
         updateLocalStorageSlot()
-        updateLocalStoragedate()
-    })
+    },[updateLocalStorageSlot])
 
 
     return (

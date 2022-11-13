@@ -1,0 +1,38 @@
+.scrols {
+    height: 500px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: scroll;
+
+}
+
+.scrols::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (min-width: 100px) and (max-width: 767px){
+    .downsid{
+        display: none!important;
+
+    }
+     .qui{
+        /* width: 90%; */
+        display:grid;
+        grid-template-columns: repeat(3,auto);
+        row-gap: 30px;
+    }
+     
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .downsid{
+        display: none!important;
+        
+    }
+     .qui{
+        /* width: 90%; */
+        display:grid;
+        grid-template-columns: repeat(4,auto);
+        row-gap: 30px;
+    } 
+}
