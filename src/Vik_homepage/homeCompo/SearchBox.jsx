@@ -18,13 +18,13 @@ import { SlLocationPin } from "react-icons/sl";
 
 const SearchLoc = () => {
   return (
-    <HStack spacing="20px" marginLeft="300px" display="flex" flexWrap="wrap" >
+    <HStack spacing="20px" w="70%" m="auto" display="flex" justifyContent="space-between" flexWrap="wrap" >
       <Popover>
         <PopoverTrigger w="200px">
           <div
             style={{
               height: "50px",
-              width: "120px",
+              width: "20%",
               backgroundColor: "white",
               borderRadius: "5px",
             }}
@@ -64,7 +64,7 @@ const SearchLoc = () => {
 
       <InputGroup
         color="black"
-        w="60%"
+        w="77%"
         h="50px"
         bg="white"
         borderRadius="5px"
