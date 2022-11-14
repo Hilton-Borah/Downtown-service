@@ -10,6 +10,7 @@ const postData = (data, category) => (dispatch) => {
     axios.post(`https://downtown-service-pda6.onrender.com/${category}`, data)
         .then((res) => {
             dispatch({ type: types.ADD_PRODUCT_SUCCESS, payload: res.data })
+            dispatch(getElectricianData)
         })
         .catch((err) => {
             dispatch({ type: types.ADD_PRODUCT_FAILURE })
@@ -90,8 +91,21 @@ const loginAuth = (formState) => (dispatch) => {
         })
 }
 
+const deletedata=(id)=>(dispatch)=>{
+    dispatch({type:types.DELETE_PRODUCT_REQUEST});
+    axios.delete(`https://downtown-service-pda6.onrender.com/electrician/${id}`)
+    .then((res)=>{
+        console.log(res.data)
+        dispatch({type:types.DELETE_PRODUCT_SUCCESS,payload:res.data})
+        dispatch(getElectricianData)
+    })
+    .catch((err)=>{
+        console.log(err)
+        dispatch({type:types.DELETE_PRODUCT_FAILURE})
+    })
+}
 
-export { postData, getElectricianData, getPlumberData, getData, getDatam,loginAuth}
+export { postData, getElectricianData, getPlumberData, getData, getDatam,loginAuth,deletedata}
 
 
 // const getData=()=>(dispatch)=>{
@@ -120,18 +134,6 @@ export { postData, getElectricianData, getPlumberData, getData, getDatam,loginAu
 //     })
 // }
 
-// const deletedata=(id)=>(dispatch)=>{
-//     dispatch({type:types.DELETE_PRODUCT_REQUEST});
-//     axios.delete(`http://localhost:8080/products/${id}`)
-//     .then((res)=>{
-//         console.log(res.data)
-//         dispatch({type:types.DELETE_PRODUCT_SUCCESS,payload:res.data})
-//         dispatch(getData)
-//     })
-//     .catch((err)=>{
-//         console.log(err)
-//         dispatch({type:types.DELETE_PRODUCT_FAILURE})
-//     })
-// }
 
-// export { getData, postData, updatedata, deletedata }
+
+// export { getData, postData, updatedata,  }

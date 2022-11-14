@@ -61,7 +61,8 @@ function DrawerExample1() {
   };
 
   const submitData = () => {
-    saveLocalData("username", formState.username)
+    saveLocalData("username", formState.username);
+    saveLocalData("emailId",formState.email);
     setCheck(true)
     // setIsloading(true)
 
@@ -102,11 +103,11 @@ function DrawerExample1() {
         } else {
           setResponse1Check(3)
         }
-        if (formState.email === "hiltonborah123@gmail.com") {
-          navigate("/adminpage")
-        } else {
-          navigate("/")
-        }
+        // if (formState.email === "hiltonborah123@gmail.com") {
+        //   navigate("/adminpage")
+        // } else {
+        //   navigate("/")
+        // }
       })
       .catch((err) => {
         setIsloading1(false)
@@ -117,6 +118,11 @@ function DrawerExample1() {
   }
 
   let username = getLocalData("username")
+  let emailId = getLocalData("emailId")
+
+  const handleAdmin=()=>{
+    navigate("/adminpage")
+  }
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -127,6 +133,7 @@ function DrawerExample1() {
         {username || "Login/Sign Up"}
       </Button>
       {isAuth ? <b onClick={handleLogout} style={{ cursor: "pointer" }}>Logout</b> : null}
+      {emailId==="hiltonborah123@gmail.com"?<b onClick={handleAdmin} style={{ cursor: "pointer" }}>Admin dashboard</b> : null}
       <Drawer
         isOpen={isOpen}
         placement="right"

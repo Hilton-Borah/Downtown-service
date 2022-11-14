@@ -1,5 +1,5 @@
 import React from "react";
-import { VStack, Box, HStack, Text, Heading, Button, Flex } from "@chakra-ui/react"
+import { VStack, Box, HStack, Text, Heading, Button, Spinner } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux"
@@ -14,6 +14,7 @@ import styles from "./WomenPage.module.css"
 const SaloonPrime = () => {
     const dispatch = useDispatch()
     const products = useSelector((state) => state.products)
+    const isLoading = useSelector(store => store.isLoading);
 
     useEffect(() => {
         dispatch(getData)
@@ -131,6 +132,13 @@ const SaloonPrime = () => {
                             className={styles.scrolls}
                             // border="1px solid green"
                             textAlign="left">
+                                                                {isLoading ? <Box display={"flex"} justifyContent="center" alignItems={"center"} marginTop={"50px"}><Spinner
+                                    thickness='4px'
+                                    speed='0.65s'
+                                    emptyColor='gray.200'
+                                    color='blue.500'
+                                    size='xl'
+                                  /></Box>:null}
                             {products && products.map((item) => {
                                 return <div>
                                     <Box className="prod"

@@ -38,8 +38,8 @@ const AddProduct = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(postData(input, category))
-        // setInput(initialState)
         alert("Successfully added")
+        setInput(initialState)
     }
 
     let username = getLocalData("username")

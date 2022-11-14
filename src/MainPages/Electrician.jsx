@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import { VStack, Box, HStack, Button, Heading, Text } from "@chakra-ui/react"
+import { VStack, Box, HStack, Button, Heading, Text, Spinner } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import styles from "./Electrician.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getElectricianData } from "../Redux/action.js";
+import { deletedata, getElectricianData } from "../Redux/action.js";
 import ProductCard from "../Small/ProductCard";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
 import { FaLeaf } from "react-icons/fa";
 // import { store } from "../../Redux/store";
 
 const Electricians = () => {
-    const [admin, setAdmin] = useState(false);
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const products = useSelector(store => store.products);
+    const isLoading = useSelector(store => store.isLoading);
+    const isLaoding1 = useSelector(store => store.isLaoding1);
     const [cost, setCost] = useState(0)
     const [count, setCount] = useState(0)
-    let [dataStore,setdataStore] = useState([])
+    let [dataStore, setdataStore] = useState([])
 
     useEffect(() => {
         dispatch(getElectricianData)
@@ -26,34 +28,24 @@ const Electricians = () => {
 
     const handleAddPrice = (item) => {
         setCount(count + 1)
-        if (dataStore===[]){
+        if (dataStore === []) {
             setdataStore([item])
         } else {
-            setdataStore([...dataStore,item])
+            setdataStore([...dataStore, item])
         }
 
         saveLocalData("allProducts", dataStore)
     }
 
     let checkStorage = getLocalData("allProducts")
+    let emailId = getLocalData("emailId")
 
-    console.log(checkStorage)
 
-    // const checkFunction =(item)=>{
-    //     if (checkStorage !== []){
-    //         for (let i=0;i<checkStorage.length;i++){
-    //             if (item.id === checkStorage[i].id){
-    //                 return true
-    //             }
-    //             break
-    //         }
-    //     }
-    //     return false
-    // }
-
-    // let store = checkFunction(item)
-  
-    // console.log(admin)
+    const handleDelete = (id) => {
+        dispatch(deletedata(id))
+        // dispatch(getElectricianData)
+        window.location.reload()
+    }
 
     return <div>
         <VStack spacing="25px">
@@ -71,10 +63,6 @@ const Electricians = () => {
                         <Text color="grey" >🛒144 bookings this year in Kucha Mahajani</Text>
                     </Box>
                 </HStack>
-                <div>
-                    <Button onClick={() => setAdmin(true)}>Admin</Button>
-                    <Button onClick={() => setAdmin(false)}>User</Button>
-                </div>
                 <Box mt="20px" w="100%" h="5px" bg="lightgrey"></Box>
 
                 <Box className={styles.quick}
@@ -168,6 +156,13 @@ const Electricians = () => {
                         <Box className={styles.scroll}
                             // border="1px solid green"
                             textAlign="left">
+                            {isLoading ? <Box display={"flex"} justifyContent="center" alignItems={"center"} marginTop={"50px"}><Spinner
+                                thickness='4px'
+                                speed='0.65s'
+                                emptyColor='gray.200'
+                                color='blue.500'
+                                size='xl'
+                            /></Box> : null}
                             {products && products.map((item) => {
                                 return <div
                                     // <ProductCard {...item}/>
@@ -187,25 +182,23 @@ const Electricians = () => {
                                         <li>{item.details2}</li>
                                     </Box>
                                     <VStack>
-                                    <Box>
-                                        <Image h="100px" w="120px" src={item.image} />
-                                        {/* {admin ?
-                                            <Box display="flex" mt="10px" gap="5px">
-                                                <Button fontSize="14px" h="30px" w="30px" color="white" bg="green.500" onClick={() => handleAddPrice(item)} >Add</Button>
-                                                <Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button>
-                                                
-                                                <Image cursor="pointer" h="30px" w="50px" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/lg/307/wastebasket_1f5d1-fe0f.png" /> */}
+                                        <Box>
+                                            <Image h="100px" w="120px" src={item.image} />
+                                            {emailId === "hiltonborah123@gmail.com" ?
+                                                <Box display="flex" mt="10px" gap="5px">
+                                                    <Link to={`/adminpage/editService`}><Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button></Link>
+                                                    <Button onClick={() => handleDelete(item.id)} fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Delete</Button></Box> : <Box display="flex" mt="10px">
+                                                    <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" onClick={() => handleAddPrice(item)}>Add</Button>
+                                                </Box>}
 
-                                    </Box>
-                                    <Box display="flex" mt="10px">
-                                        <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" onClick={() => handleAddPrice(item)}>Add</Button>
-                                    </Box>
+                                        </Box>
+
                                     </VStack>
                                 </div>
                             })}
                         </Box>
                         <Box>
-                            <Button mt="5px" ml="610px" color="white" bgColor="red.500">Next ↓</Button>
+                            <Button mt="5px" ml="530px" color="white" bgColor="red.500">Next ↓</Button>
                         </Box>
                     </Box>
                     {/* right side */}
@@ -248,7 +241,7 @@ const Electricians = () => {
                     </Box>
                     <Box display="flex" p="10px" mt={"20px"} justifyContent="space-between">
                         <Text fontSize="16px">{count} item added to your cart</Text>
-                        <Link to={"/cartpage"}><Button w="100px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
+                        <Link to={"/cartpage"} ><Button disabled={count === 0} w="100px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
                     </Box>
                 </Box>
             </Box>

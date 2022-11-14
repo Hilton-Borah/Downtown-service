@@ -1,20 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { VStack, Box, HStack, Button, Stack, Text, Heading } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import styles from "./ManPage.module.css"
-import { getDatam } from "../Redux/action";
+import { deletedata, getDatam } from "../Redux/action";
 import { useDispatch, useSelector } from "react-redux";
+import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
+import { Link } from "react-router-dom";
 
 
 const MensSaloon = () => {
     const dispatch = useDispatch()
     const products = useSelector((state) => state.products)
+    const isLoading = useSelector(store => store.isLoading);
+    const isLaoding1 = useSelector(store => store.isLaoding1);
+    const [cost, setCost] = useState(0)
+    const [count, setCount] = useState(0)
+    let [dataStore, setdataStore] = useState([])
 
     useEffect(() => {
         dispatch(getDatam)
     }, [])
     console.log(products)
+
+    const handleAddPrice = (item) => {
+        setCount(count + 1)
+        if (dataStore === []) {
+            setdataStore([item])
+        } else {
+            setdataStore([...dataStore, item])
+        }
+
+        saveLocalData("allProducts", dataStore)
+    }
+
+    let checkStorage = getLocalData("allProducts")
+    let emailId = getLocalData("emailId")
+
+
+    const handleDelete = (id) => {
+        dispatch(deletedata(id))
+        // dispatch(getElectricianData)
+        window.location.reload()
+    }
     return <div>
         <VStack spacing="25px" >
             <Box w="75%" h="500px"    >
@@ -113,10 +141,12 @@ const MensSaloon = () => {
                                     >
                                         <Heading size="md">{item.name}</Heading>
                                         <Text>★{item.star} ({item.total_rating})</Text>
-                                        <Box gap="15px" display="flex" p="5px" w="20%" h="30px" paddingLeft="500px" >
-                                            <Button>Add</Button>
-                                            <Button>Edit</Button>
-                                        </Box>
+                                        {emailId === "hiltonborah123@gmail.com" ?
+                                            <Box display="flex" mt="10px" gap="5px">
+                                                <Link to={`/adminpage/editService`}><Button fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Edit</Button></Link>
+                                                <Button onClick={() => handleDelete(item.id)} fontSize="14px" h="30px" w="30px" color="white" bg="blue.500" >Delete</Button></Box> : <Box display="flex" mt="10px" ml={"500px"}>
+                                                <Button ml="25px" fontSize="14px" h="30px" w="30px" color="white" bg="green.500" onClick={() => handleAddPrice(item)}>Add</Button>
+                                            </Box>}
                                         <Text><b>₹{item.original_price} .</b> {item.duration}</Text>
                                         <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
 
@@ -160,6 +190,18 @@ const MensSaloon = () => {
                                 Upto 200 cashback
                             </Button> */}
                         {/* </Stack> */}
+                        <Box mb="10px" mt="120px" w="100%"
+                            h="100px" 
+                        // bg="grey"
+                        >
+                            <Box bg="gray.100">
+                                <Text p="5px" color="green">Add ₹62 more to save on Min Order Fee</Text>
+                            </Box>
+                            <Box display="flex" p="10px" mt={"20px"} justifyContent="space-between">
+                                <Text fontSize="16px">{count} item added to your cart</Text>
+                                <Link to={"/cartpage"} ><Button disabled={count === 0} w="100px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
+                            </Box>
+                        </Box>
                     </Box>
                 </HStack>
             </Box>

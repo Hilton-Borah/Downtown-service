@@ -4,6 +4,7 @@ const initialState = {
   products: [],
   isAuth:false,
   isLoading: false,
+  isLoading1: false,
   isError: false,
 };
 
@@ -147,24 +148,24 @@ export const reducer = (state = initialState, action) => {
     //   }
 
 
-    // case types.DELETE_PRODUCT_REQUEST:
-    //   return {
-    //     isLoading: true,
-    //     isError: false,
-    //   }
-    // case types.DELETE_PRODUCT_SUCCESS:
-    //   return {
-    //     isLoading: false,
-    //     isError: false,
-    //     products: payload
-    //   }
+    case types.DELETE_PRODUCT_REQUEST:
+      return {
+        isLoading1: true,
+        isError: false,
+      }
+    case types.DELETE_PRODUCT_SUCCESS:
+      return {
+        isLoading1: false,
+        isError: false,
+        products: payload
+      }
 
-    // case types.DELETE_PRODUCT_FAILURE:
-    //   return {
-    //     isLoading: false,
-    //     isError: true,
-    //     products: []
-    //   }
+    case types.DELETE_PRODUCT_FAILURE:
+      return {
+        isLoading1: false,
+        isError: true,
+        products: []
+      }
   }
   return state;
 };
