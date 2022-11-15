@@ -31,7 +31,7 @@ const HomePage = () => {
         </div>
         <div className={styles.searchBox}>
           <p style={{ fontSize: "14px" }}>Home / India</p>
-          <b style={{ fontSize: "50px", fontFamily: "sans-serif" }}>
+          <b >
             Home services, on demand.
           </b>
           <div style={{ marginTop: "20px" }}>
@@ -158,8 +158,8 @@ const HomePage = () => {
       {/* Book now */}
       {/* slider-1 */}
       <div
-        style={{ marginBottom: "60px", marginRight: "60px" }}
-        className={styles.NewCatLaunch}
+        style={{ margin: "60px " }}
+        // className={styles.NewCatLaunch}
       >
         <SliderImages />
       </div>
@@ -271,8 +271,7 @@ const HomePage = () => {
         Cleaning & Pest Control
       </p>
       <div
-        style={{ marginBottom: "60px", marginRight: "60px" }}
-        className={styles.NewCatLaunch}
+        style={{ margin: "60px " }}
       >
         <SliderImages1 />
       </div>

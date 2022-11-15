@@ -6,7 +6,7 @@ import "./Slider1.css";
 const SliderImages=()=>{
     const settings = {
         dots: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 1
@@ -18,7 +18,7 @@ const SliderImages=()=>{
         <Slider className="slider" {...settings}>
         <div>
           <img
-            style={{marginRight:"50px"}}
+            // style={{marginRight:"50px"}}
             src="https://camo.githubusercontent.com/ac224328e1ccbb27fa008cb9f6917e4fa40b6a448d8093c4174405f5b2d953f8/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f3536382f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313636373338363439333930302d3164356530392e6a706567"
             alt=""
           />
@@ -56,7 +56,7 @@ const SliderImages=()=>{
 const SliderImages1=()=>{
   const settings = {
       dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1
