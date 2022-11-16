@@ -58,12 +58,12 @@
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-/* .personalServ>a{
+.personalServ>a{
     width: 20%;
-    border-radius: 5px;
-    
-} */
+    border-radius: 5px;    
+}
 .personalServ > a > div {
+
   width: 100%;
   height: 120px;
   border-radius: 5px;
@@ -94,10 +94,10 @@
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-/* .homeServ>a{
+.homeServ>a{
     width: 20%;
     border-radius: 5px;
-} */
+}
 .homeServ > a > div {
   width: 100%;
   height: 120px;
@@ -243,6 +243,7 @@
   }
   .NewCatLaunch > div > img {
     height: 110px;
+    width: 145px;
   }
   .NewCatLaunch > div > img:hover {
 
@@ -250,10 +251,37 @@
   }
   .appliances > div > img {
     height: 110px;
+    width: 145px;
   }
   .appliances > div > img:hover {
 
     height: 115px;
+  }
+  .NewCatLaunch > div > p:nth-child(2) {
+    color: rgba(71, 77, 74, 0.993);
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .NewCatLaunch > div > p:nth-child(3) {
+    color: rgb(147, 153, 153);
+    font-size: 12px;
+  }
+  .appliances > div > p:nth-child(2) {
+    color: rgba(71, 77, 74, 0.993);
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .appliances > div > p:nth-child(3) {
+    color: rgb(147, 153, 153);
+    font-size: 12px;
+  }
+  .personalServ > a > div > p {
+    font-size: 12px;
+    margin-top: 13px;
+  }
+  .homeServ > a > div > p {
+    font-size: 12px;
+    margin-top: 13px;
   }
 }
 
@@ -266,16 +294,43 @@
   }
   .NewCatLaunch > div > img {
     height: 80px;
+    width: 110px;
   }
   .NewCatLaunch > div > img:hover {
-  
     height: 84px;
   }
   .appliances > div > img {
     height: 80px;
+    width: 110px;
   }
   .appliances > div > img:hover {
    
     height: 84px;
+  }
+  .NewCatLaunch > div > p:nth-child(2) {
+    color: rgba(71, 77, 74, 0.993);
+    margin-top: 6px;
+    font-size: 12px;
+  }
+  .NewCatLaunch > div > p:nth-child(3) {
+    color: rgb(147, 153, 153);
+    font-size: 10px;
+  }
+  .appliances > div > p:nth-child(2) {
+    color: rgba(71, 77, 74, 0.993);
+    margin-top: 6px;
+    font-size: 12px;
+  }
+  .appliances > div > p:nth-child(3) {
+    color: rgb(147, 153, 153);
+    font-size: 10px;
+  }
+  .personalServ > a > div > p {
+    font-size: 11px;
+    margin-top: 10px;
+  }
+  .personalServ > a > div > p {
+    font-size: 11px;
+    margin-top: 10px;
   }
 }

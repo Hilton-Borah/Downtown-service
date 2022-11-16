@@ -1,6 +1,6 @@
 .slider {
-  margin: auto;
-  width: 90%;
+    width: 90%;
+    margin: auto;
 }
 
 .slick-slide > div > div > img {
@@ -8,6 +8,17 @@
     height: 150px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+.slick-slide > div > div > img:hover{
+    width: 264px;
+    height: 154px;
+    transition: 0.3s;
+}    
+
+.slick-slide > div > div > p{
+    font-size: 16px;
 }
 
 .slick-prev::before {
@@ -24,8 +35,11 @@
 
 @media only screen and (max-width: 1300px ) {
     .slick-slide > div > div > img {
-        width: 200px;
+        width: 180px;
         height: 100px;
+    }
+    .slick-slide > div > div > p{
+        font-size: 12px;
     }
     .slick-next::before, .slick-prev::before{
         font-size: 40px;
@@ -34,8 +48,11 @@
 
 @media only screen and (max-width: 768px ) {
     .slick-slide > div > div > img {
-        width: 170px;
+        width: 140px;
         height: 70px;
+    }
+    .slick-slide > div > div > p{
+        font-size: 10px;
     }
     .slick-next::before, .slick-prev::before{
         font-size: 30px;
