@@ -6,7 +6,7 @@ Downtown service is a site who provides various types of sevices to the user lik
 3. Ankit,
 4. Hilton Kumar Borah(Leader)
 
-<h1>Features</h1>
+<h1>Features:-</h1>
 1. Authentication and authorization,
 2. Book an order,
 
