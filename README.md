@@ -1,15 +1,18 @@
 Downtown service is a site who provides various types of sevices to the user like plumber, electricians and also other home services. To see this webiste live please click on the link :- https://downtown-service.vercel.app/
 
 <h1>Teammates:-</h1>
+
 1. Kiran Gangurde,
 2. Vikas Dongarwar,
 3. Ankit,
 4. Hilton Kumar Borah(Leader)
 
 <h1>Features:-</h1>
+
 1. Authentication and authorization,
 2. Book an order,
 
+<h1>Pages:-</h1>
 
 Home page
 
