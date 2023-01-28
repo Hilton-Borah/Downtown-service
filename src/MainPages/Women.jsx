@@ -4,7 +4,7 @@ import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react";
-import { getData } from "../Redux/action";
+import { getData } from "../Redux/productReducer/action";
 import styles from "./WomenPage.module.css"
 // import styles from 'styled-components'
 
@@ -13,8 +13,8 @@ import styles from "./WomenPage.module.css"
 
 const SaloonPrime = () => {
     const dispatch = useDispatch()
-    const products = useSelector((state) => state.products)
-    const isLoading = useSelector(store => store.isLoading);
+    const products = useSelector((state) => state.ProductReducer.products)
+    const isLoading = useSelector(store => store.ProductReducer.isLoading);
 
     useEffect(() => {
         dispatch(getData)

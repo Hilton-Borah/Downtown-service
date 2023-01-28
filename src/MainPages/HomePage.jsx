@@ -3,12 +3,14 @@ import { DrawerExample, DrawerExample1 } from "../Small/loginSignDrawer";
 import SearchLoc from "../Small/SearchBox";
 import { FaTwitterSquare } from "react-icons/fa";
 import { AiFillFacebook } from "react-icons/ai";
-import { SlSocialInstagram } from "react-icons/sl";
+import { SlLocationPin, SlSocialInstagram } from "react-icons/sl";
 import { IoLogoYoutube } from "react-icons/io";
 // import { TfiLinkedin } from "react-icons/tf";
-import { BsPinterest } from "react-icons/bs";
+import { BsPinterest, BsSearch } from "react-icons/bs";
 import { SliderImages, SliderImages1 } from "../Small/slider1";
 import { Outlet, Link } from "react-router-dom";
+import { Box, Flex,Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import Slider1 from "./Slider1";
 
 const HomePage = () => {
 
@@ -23,20 +25,30 @@ const HomePage = () => {
           />
           <div className={styles.register}>
             <div>Blog</div>
-            <div style={{ textDecorationLine: "underline" }}>
+            {/* <div style={{ textDecorationLine: "underline" }}>
               Register As A Professional
-            </div>
+            </div> */}
             {/* <DrawerExample /> */}
             <DrawerExample1 />
           </div>
         </div>
         <div className={styles.searchBox}>
           <p style={{ fontSize: "14px" }}>Home / India</p>
-          <b style={{ fontSize: "50px", fontFamily: "sans-serif" }}>
+          <b className={styles.bigText}>
             Home services, on demand.
           </b>
           <div style={{ marginTop: "20px" }}>
             <SearchLoc />
+            {/* <Flex justifyContent={"center"} gap={"10px"}>
+              <InputGroup w={"15%"}>
+                <InputLeftAddon children={<SlLocationPin color="black"/>} />
+                <Input  bg={"white"} type='tel' placeholder='Current location' />
+              </InputGroup>
+              <InputGroup w={"30%"}>
+                <InputLeftAddon children={<Box><BsSearch color="black"/></Box>} />
+                <Input bg={"white"} type='tel' placeholder='Search for Society/Apartment' />
+              </InputGroup>
+            </Flex> */}
           </div>
           <p
             style={{
@@ -99,70 +111,63 @@ const HomePage = () => {
       </div>
 
       {/* Home sevrvices options */}
-      <b
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-        }}
-      >
+      <b className={styles.betHomePre}>
         Home Services
       </b>
       <div className={styles.homeServ}>
-      <Link to={"/electrician"}>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/e6869b7c0a59a2fb769daeaea048a49efe14aaa15334d61c8f54ef235254eeed/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37326431383935302e706e67"
-            alt="electrician"
-          />
-          <p>Electrician</p>
-        </div>
+        <Link to={"/electrician"}>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/e6869b7c0a59a2fb769daeaea048a49efe14aaa15334d61c8f54ef235254eeed/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37326431383935302e706e67"
+              alt="electrician"
+            />
+            <p>Electrician</p>
+          </div>
         </Link>
         <Link to={"/plumber"}>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/f0355b9be6dac41299e44ca258aaa471b1de075ddc82d83773c8fcbfc861d5e6/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36666261643337302e706e67"
-            alt="Plumber"
-          />
-          <p>Plumber</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/f0355b9be6dac41299e44ca258aaa471b1de075ddc82d83773c8fcbfc861d5e6/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36666261643337302e706e67"
+              alt="Plumber"
+            />
+            <p>Plumber</p>
+          </div>
         </Link>
         <Link>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/7a834d6d15a1d60da95e83574bee417d519118cd86b076afc32c3dc64e90e17a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313633313637393531353230362d6136393338392e706e67"
-            alt="Home paint"
-          />
-          <p>Home Painting</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/7a834d6d15a1d60da95e83574bee417d519118cd86b076afc32c3dc64e90e17a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313633313637393531353230362d6136393338392e706e67"
+              alt="Home paint"
+            />
+            <p>Home Painting</p>
+          </div>
         </Link>
         <Link>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/df116cda9e7f290dda56e57f2d2e9238fcf7162b4331582c39574570a74b1f58/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36623166353235302e706e67"
-            alt="clean & pest"
-          />
-          <p>Cleaning & Pest</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/df116cda9e7f290dda56e57f2d2e9238fcf7162b4331582c39574570a74b1f58/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36623166353235302e706e67"
+              alt="clean & pest"
+            />
+            <p>Cleaning & Pest</p>
+          </div>
         </Link>
         <Link>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/1270641dc31d58150f341f5e8880e99d86fb82919ea028c7d3325359d2629f4a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313634313231333838363538382d3930613930332e706e67"
-            alt="disinfection"
-          />
-          <p>Disinfection</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/1270641dc31d58150f341f5e8880e99d86fb82919ea028c7d3325359d2629f4a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313634313231333838363538382d3930613930332e706e67"
+              alt="disinfection"
+            />
+            <p>Disinfection</p>
+          </div>
         </Link>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* Book now */}
       {/* slider-1 */}
       <div
-        style={{ marginBottom: "60px", marginRight: "60px" }}
-        className={styles.NewCatLaunch}
+        style={{ margin:"20px",marginBottom: "60px",}}
       >
-        <SliderImages />
+        <Slider1/>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* new category lauches */}

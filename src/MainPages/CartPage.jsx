@@ -35,8 +35,6 @@ const CartSummary = () => {
     let slot = getLocalData("slot") || []
     let date = getLocalData("date") || []
 
-    console.log(isAuth)
-
     const totalPrice =storeData && storeData.reduce(
         (prevValue, currentValue) => prevValue + Number(currentValue.original_price),
         0
@@ -134,11 +132,11 @@ const CartSummary = () => {
                             <Button onClick={FlexClick}><BasicUsage1 setDummy={setDummy}/></Button>
                             <Button onClick={FlexClick}><BasicUsage setDummy1={setDummy1} dummy1={dummy1}/></Button>
                         </Flex>
-                        {!isAuth ? <Text color={"red"} mt={"20px"} mb={"-10px"}>You are not login, Please login first</Text>:null}
-                        <Link to={"/paymentpage"}><Box mt="30px">
-                            {!isAuth ? <Button w="90%" h="50px" bgColor="purple.500" color="white">Login/Sign up to proceed</Button>:
-                            <Button disabled={count<2} w="90%" h="50px" bgColor="purple.500" color="white" >Go for payment</Button>}
-                        </Box></Link>
+                        {!getLocalData("token") ? <Text color={"red"} mt={"20px"} mb={"-10px"}>You are not login, Please login first</Text>:null}
+                       <Box mt="30px">
+                            {!getLocalData("token")  ? <Link to={"/"}><Button w="90%" h="50px" bgColor="purple.500" color="white">Login/Sign up to proceed</Button></Link>:
+                            <Link to={"/paymentpage"}><Button disabled={count<2} w="90%" h="50px" bgColor="purple.500" color="white" >Go for payment</Button></Link>}
+                        </Box>
                     </Box>
                 </Box>
             </Box>

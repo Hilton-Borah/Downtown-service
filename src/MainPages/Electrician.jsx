@@ -5,7 +5,7 @@ import { Image } from '@chakra-ui/react'
 import styles from "./Electrician.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deletedata, getElectricianData } from "../Redux/action.js";
+import { deletedata, getElectricianData } from "../Redux/productReducer/action";
 import ProductCard from "../Small/ProductCard";
 import { Link, useNavigate } from "react-router-dom";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
@@ -15,24 +15,27 @@ import { FaLeaf } from "react-icons/fa";
 const Electricians = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const products = useSelector(store => store.products);
-    const isLoading = useSelector(store => store.isLoading);
-    const isLaoding1 = useSelector(store => store.isLaoding1);
+    const products = useSelector(store => store.ProductReducer.products);
+    const isLoading = useSelector(store => store.ProductReducer.isLoading);
+    const isLaoding1 = useSelector(store => store.ProductReducer.isLaoding1);
     const [cost, setCost] = useState(0)
     const [count, setCount] = useState(0)
     let [dataStore, setdataStore] = useState([])
+    const [kela,setKela] = useState(false)
 
     useEffect(() => {
         dispatch(getElectricianData)
     }, [])
 
     const handleAddPrice = (item) => {
+        setdataStore([...dataStore,item])
+        setKela(true)
         setCount(count + 1)
-        if (dataStore === []) {
-            setdataStore([item])
-        } else {
-            setdataStore([...dataStore, item])
-        }
+        // if (dataStore === []) {
+        //     setdataStore([item])
+        // } else {
+        // }
+        console.log(dataStore)
 
         saveLocalData("allProducts", dataStore)
     }

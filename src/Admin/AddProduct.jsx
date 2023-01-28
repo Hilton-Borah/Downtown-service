@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Text, Flex, FormControl, FormLabel, Input, Select, Image, MenuButton, Menu, MenuList, MenuItem, Button, Divider } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
-import { postData } from '../Redux/action'
+import { postData } from '../Redux/productReducer/action'
 import { IoIosArrowDown } from "react-icons/io"
 import { AiOutlineArrowRight } from "react-icons/ai"
 // import {AiFillHome} from "react-icons/ai"

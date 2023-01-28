@@ -3,7 +3,7 @@ import { VStack, Box, HStack, Button, Stack, Text, Heading } from "@chakra-ui/re
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import styles from "./ManPage.module.css"
-import { deletedata, getDatam } from "../Redux/action";
+import { deletedata, getDatam } from "../Redux/productReducer/action";
 import { useDispatch, useSelector } from "react-redux";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
 import { Link } from "react-router-dom";
@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 
 const MensSaloon = () => {
     const dispatch = useDispatch()
-    const products = useSelector((state) => state.products)
-    const isLoading = useSelector(store => store.isLoading);
-    const isLaoding1 = useSelector(store => store.isLaoding1);
+    const products = useSelector((state) => state.ProductReducer.products)
+    const isLoading = useSelector(store => store.ProductReducer.isLoading);
+    const isLaoding1 = useSelector(store => store.ProductReducer.isLaoding1);
     const [cost, setCost] = useState(0)
     const [count, setCount] = useState(0)
     let [dataStore, setdataStore] = useState([])
