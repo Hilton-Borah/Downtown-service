@@ -5,6 +5,7 @@
     border: 1px solid lightgrey;
     display: flex;
     border-left: none;
+    justify-content: space-between;
     border-right: none;border-top: none;
 }
 .leftandRightBox{

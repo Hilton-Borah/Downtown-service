@@ -8,6 +8,7 @@ import Electricians from '../MainPages/Electrician'
 import HomePage from '../MainPages/HomePage'
 import MensSaloon from '../MainPages/ManPage'
 import Payment from '../MainPages/PaymentPage'
+import Plumber from '../MainPages/Plumber'
 import SaloonPrime from '../MainPages/Women'
 import ReqAuth from './ReqAuth'
 
@@ -20,7 +21,7 @@ const AllRoutes = () => {
         <Route path='/mensalon' element={<MensSaloon/>}/>
         <Route path='/womensalon' element={<SaloonPrime/>}/>
         <Route path='/electrician' element={<Electricians/>}/>
-        <Route path='/plumber' element={""}/>
+        <Route path='/plumber' element={<Plumber/>}/>
         <Route path='/cartpage' element={<CartSummary/>}/>
         <Route path='/paymentpage' element={<Payment/>}/>
       </Routes>

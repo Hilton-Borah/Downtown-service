@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VStack, Box, HStack, Button, Heading, Text, Spinner } from "@chakra-ui/react"
+import { VStack, Box, HStack, Button, Heading, Text, Spinner, useToast } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import styles from "./Electrician.module.css"
@@ -10,6 +10,7 @@ import ProductCard from "../Small/ProductCard";
 import { Link, useNavigate } from "react-router-dom";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
 import { FaLeaf } from "react-icons/fa";
+import axios from "axios";
 // import { store } from "../../Redux/store";
 
 const Electricians = () => {
@@ -21,23 +22,49 @@ const Electricians = () => {
     const [cost, setCost] = useState(0)
     const [count, setCount] = useState(0)
     let [dataStore, setdataStore] = useState([])
-    const [kela,setKela] = useState(false)
+    const [kela, setKela] = useState(false)
+    const toast = useToast()
+    const [datalength, setLength] = useState(0)
 
     useEffect(() => {
         dispatch(getElectricianData)
+        
+        axios.get("https://tame-gold-cricket-yoke.cyclic.app/cart")
+            .then((res) => {
+                setLength(res.data.length)
+                setCount(1)
+            }).catch((err) => {
+                console.log(err)
+            })
     }, [])
 
     const handleAddPrice = (item) => {
-        setdataStore([...dataStore,item])
-        setKela(true)
-        setCount(count + 1)
-        // if (dataStore === []) {
-        //     setdataStore([item])
-        // } else {
-        // }
-        console.log(dataStore)
+        axios.post("https://tame-gold-cricket-yoke.cyclic.app/cart/add", item)
+            .then((res) => {
+                if (res.data==="Item already in your cart"){
+                    toast({
+                        title: `Item already in your cart`,
+                        status: "error",
+                        isClosable: true,
+                      })
+                }else {
+                    toast({
+                        title: `Service added to cart`,
+                        status: "success",
+                        isClosable: true,
+                      })
+                }
+            }).catch((err) => {
+                console.log(err)
+            })
 
-        saveLocalData("allProducts", dataStore)
+        axios.get("https://tame-gold-cricket-yoke.cyclic.app/cart")
+            .then((res) => {
+                setLength(res.data.length)
+                setCount(1)
+            }).catch((err) => {
+                console.log(err)
+            })
     }
 
     let checkStorage = getLocalData("allProducts")
@@ -52,7 +79,7 @@ const Electricians = () => {
 
     return <div>
         <VStack spacing="25px">
-            <Box w="75%" h="200px"
+            <Box w="90%" h="200px"
             // border="1px solid green"
             >
                 {/* left top heading */}
@@ -148,13 +175,12 @@ const Electricians = () => {
                 </Box>
 
                 <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
-
-                <HStack
-                    // border="1px solid red"
-                    justifyContent="space-between"
+                <Box
+                    className={styles.mainBox}
+                    
                 >
                     {/* left side */}
-                    <Box w="55%" h="400px">
+                    <Box w={{ base: '100%', sm: '90%', md: '80%' }} h="400px">
                         <Heading pt="30px" pb="30px" size="lg" textAlign="left">Quick booking</Heading>
                         <Box className={styles.scroll}
                             // border="1px solid green"
@@ -199,9 +225,9 @@ const Electricians = () => {
                                     </VStack>
                                 </div>
                             })}
-                        </Box>
-                        <Box>
-                            <Button mt="5px" ml="530px" color="white" bgColor="red.500">Next ↓</Button>
+                            <Box w={"100%"} display={"flex"} justifyContent="right" alignItems={"center"} >
+                                <Button disabled={isLoading} color="white" bgColor="red.500">Next ↓</Button>
+                            </Box>
                         </Box>
                     </Box>
                     {/* right side */}
@@ -232,21 +258,18 @@ const Electricians = () => {
                                 <Text className={styles.offerText}>on Amazon Pay</Text>
                             </Box>
                         </VStack>
-                    </Box>
-                </HStack>
-                {/* cost */}
-                <Box mb="10px" mt="120px" w="28%"
-                    h="100px" ml="68.5%"
-                // bg="grey"
-                >
-                    <Box bg="gray.100">
-                        <Text p="5px" color="green">Add ₹62 more to save on Min Order Fee</Text>
-                    </Box>
-                    <Box display="flex" p="10px" mt={"20px"} justifyContent="space-between">
-                        <Text fontSize="16px">{count} item added to your cart</Text>
-                        <Link to={"/cartpage"} ><Button disabled={count === 0} w="100px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
+                        <Box className={styles.lastBox}>
+                            <Box bg="gray.100">
+                                <Text p="5px" color="green">Add ₹62 more to save on Min Order Fee</Text>
+                            </Box>
+                            <Box display="flex" p="10px" mt={"20px"} justifyContent="space-between">
+                            <Text fontSize="16px">{datalength} service is in your cart</Text>
+                                <Link to={"/cartpage"} ><Button disabled={count === 0} w="100px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
+                            </Box>
+                        </Box>
                     </Box>
                 </Box>
+                {/* cost */}
             </Box>
         </VStack>
         {/* <Box>Next</Box> */}

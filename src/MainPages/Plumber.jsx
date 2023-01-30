@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { VStack, Box, HStack, Button, Heading, Text, Spinner, useToast } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
@@ -5,7 +6,7 @@ import { Image } from '@chakra-ui/react'
 import styles from "./Electrician.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deletedata, getDatam, getElectricianData } from "../Redux/productReducer/action";
+import { deletedata, getData, getDatam, getElectricianData, getPlumberData } from "../Redux/productReducer/action";
 import ProductCard from "../Small/ProductCard";
 import { Link, useNavigate } from "react-router-dom";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
@@ -13,19 +14,21 @@ import { FaLeaf } from "react-icons/fa";
 import axios from "axios";
 // import { store } from "../../Redux/store";
 
-const MensSaloon = () => {
+const Plumber = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const products = useSelector(store => store.ProductReducer.products);
     const isLoading = useSelector(store => store.ProductReducer.isLoading);
     const isLaoding1 = useSelector(store => store.ProductReducer.isLaoding1);
+    const [cost, setCost] = useState(0)
     const [count, setCount] = useState(0)
     let [dataStore, setdataStore] = useState([])
+    const [kela, setKela] = useState(false)
     const toast = useToast()
     const [datalength, setLength] = useState(0)
 
     useEffect(() => {
-        dispatch(getDatam)
+        dispatch(getPlumberData)
         
         axios.get("https://tame-gold-cricket-yoke.cyclic.app/cart")
             .then((res) => {
@@ -65,35 +68,15 @@ const MensSaloon = () => {
             })
     }
 
-    // useEffect(()=>{
-    //     axios.get("https://tame-gold-cricket-yoke.cyclic.app/cart")
-    //     .then((res)=>{
-    //         setLength(res.data.length)
-    //         setCount(1)
-    //     }).catch((err)=>{
-    //         console.log(err)
-    //     })
-    // })
 
     let checkStorage = getLocalData("allProducts")
     let emailId = getLocalData("emailId")
 
 
     const handleDelete = (id) => {
-        axios.delete(`https://tame-gold-cricket-yoke.cyclic.app/cart/delete/${id}`)
-            .then((res) => {
-                console.log("deleted")
-            }).catch((err) => {
-                console.log(err)
-            })
-
-        axios.get("https://tame-gold-cricket-yoke.cyclic.app/cart")
-            .then((res) => {
-                setLength(res.data.length)
-                setCount(1)
-            }).catch((err) => {
-                console.log(err)
-            })
+        dispatch(deletedata(id))
+        // dispatch(getElectricianData)
+        window.location.reload()
     }
 
     return <div>
@@ -103,63 +86,72 @@ const MensSaloon = () => {
             >
                 {/* left top heading */}
                 <HStack>
-                    <Box textAlign="left" w="50%" h="200px"
-                    // border="1px solid grey"
-                    >
-                        <Button mt="20px" mb="10px" bg="white" color="black" border="1px solid grey">🛡UC safe</Button>
-                        <Heading h="30px">MensSaloon</Heading>
-                        <Text color="grey" mt="20px">★ 4.76 (347K)</Text>
-                        <Text color="grey" >🛒144 bookings this year in Kucha Mahajani</Text>
-                    </Box>
+                    {/* <HStack className={styles.top}  > */}
+                        <Box textAlign="left" w="50%" h="200px"
+                        // border="1px solid grey"
+                        >
+                            <Button mt="20px" mb="10px" bg="white" color="black" border="1px solid grey">🛡UC safe</Button>
+                            <Heading h="30px">Plumber</Heading>
+                            <Text color="grey" mt="20px">★ 4.18 (254K)</Text>
+                            <Text color="grey" >🛒121 bookings this year in Kucha Mahajani</Text>
+                        </Box>
+                    {/* </HStack> */}
+
                 </HStack>
                 <Box mt="20px" w="100%" h="5px" bg="lightgrey"></Box>
 
-                <Box className={styles.quick}
-                    // display="flex" flexWrap="wrap" 
+                <Box className={styles.quick} 
                     mt="50px" mb="80px" spacing='24px'>
-                    <Box w='100px' h='100px' >
+                    <Box w='100px' h='100px'>
                         <Box boxSize='100%'>
-                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1646814042922-25f8f1.jpeg' alt='Dan Abramov' />
-                            Packages
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/luminosity/1666706468749-ac6e3f.jpeg' alt='Dan Abramov' />
+                            Packges
                         </Box>
 
                     </Box>
                     <Box w='100px' h='100px' >
                         <Box boxSize='100%'>
-                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631190374864-78f3e8.jpeg' alt='Dan Abramov' />
-                            Haircut for Men & Kid's
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1642525912071-bdb3c7.png' alt='Dan Abramov' />
+                            Frequently booked
                         </Box>
 
                     </Box>
                     <Box w='100px' h='100px' >
                         <Box boxSize='100%'>
-                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189933595-01692d.png' alt='Dan Abramov' />
-                            Hair Color
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1640239360141-0cecd8.png' alt='Dan Abramov' />
+                            Basin & sink
                         </Box>
 
                     </Box>
                     <Box w='100px' h='100px' >
                         <Box boxSize='100%'>
-                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189957304-ea2a7b.png' alt='Dan Abramov' />
-                            Shave/Beard Grooming
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1642051769505-a39d1f.png' alt='Dan Abramov' />
+                            Grouting
                         </Box>
 
                     </Box>
                     <Box w='100px' h='100px' >
                         <Box boxSize='100%'>
-                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189857376-d49e47.png' alt='Dan Abramov' />
-                            Detan & Facials
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1640239370632-3ccc71.png' alt='Dan Abramov' />
+                            Bath fitting
                         </Box>
 
                     </Box>
-                    <Box w='100px' h='100px'  >
+                    <Box w='100px' h='100px' >
                         <Box boxSize='100%'>
-                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/growth/home-screen/1631189905841-237b37.png' alt='Dan Abramov' />
-                            Massage Therapy
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1640239370241-517c01.png' alt='Dan Abramov' />
+                            Drainage pipes
                         </Box>
 
                     </Box>
 
+                    <Box w='100px' h='100px' >
+                        <Box boxSize='100%'>
+                            <Image borderRadius="10%" textAlign="center" margin="auto" src='https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/w_64,dpr_1,fl_progressive:steep,q_auto,c_limit/images/supply/customer-app-supply/1640239381172-222fa5.png' alt='Dan Abramov' />
+                           Toilet
+                        </Box>
+
+                    </Box>
                 </Box>
 
                 <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
@@ -257,13 +249,17 @@ const MensSaloon = () => {
                         </Box>
                     </Box>
                 </Box>
-                {/* cost */}
             </Box>
         </VStack>
-        {/* <Box>Next</Box> */}
     </div>
 }
-export default MensSaloon;
+export default Plumber;
+
+
+
+
+
+
 
 
 

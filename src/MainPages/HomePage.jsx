@@ -11,6 +11,7 @@ import { SliderImages, SliderImages1 } from "../Small/slider1";
 import { Outlet, Link } from "react-router-dom";
 import { Box, Flex,Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import Slider1 from "./Slider1";
+import Slider2 from "./Slider2";
 
 const HomePage = () => {
 
@@ -165,19 +166,14 @@ const HomePage = () => {
       {/* Book now */}
       {/* slider-1 */}
       <div
-        style={{ margin:"20px",marginBottom: "60px",}}
+        style={{ margin:"20px",marginBottom: "60px"}}
       >
         <Slider1/>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* new category lauches */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+         className={styles.bigText}
       >
         New Category launches
       </p>
@@ -215,21 +211,16 @@ const HomePage = () => {
           <p></p>
         </div>
       </div>
-      <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
+      <div style={{ height: "17px", backgroundColor: "#f2f4f6" }} ></div>
       {/* Appliances */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+       className={styles.bigText}
       >
         Appliances
       </p>
       <p
         style={{
-          fontSize: "20px",
+          fontSize: "16px",
           fontFamily: "sans-serif",
           marginTop: "10px",
           color: "#757575",
@@ -267,30 +258,19 @@ const HomePage = () => {
       {/* Cleaning and pest control */}
       {/* slider-2 */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+        className={styles.bigText}
       >
         Cleaning & Pest Control
       </p>
       <div
-        style={{ marginBottom: "60px", marginRight: "60px" }}
-        className={styles.NewCatLaunch}
+        style={{margin:"20px",marginBottom: "60px" }}
       >
-        <SliderImages1 />
+        <Slider2/>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* Home Repairs */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+   className={styles.bigText}
       >
         Home Repairs
       </p>
