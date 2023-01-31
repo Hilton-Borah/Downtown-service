@@ -8,7 +8,7 @@ const initialState = {
   isError: false,
 };
 
-export const reducer = (state = initialState, action) => {
+export const ProductReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     // case types.GET_PRODUCTS_REQUEST:

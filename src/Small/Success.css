@@ -1,0 +1,30 @@
+.Alert{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* height: 220px; */
+    width: 180%;
+    /* margin-left: -8%; */
+    margin-top: -40px;
+    margin-right: 190px;
+    background: #8aff9d;
+
+    border:2px solid;
+    border-radius:10px;
+    color:darkgreen
+}
+
+
+@media screen and (min-width: 100px) and (max-width: 767px){
+    .Alert{
+        height: 200px;
+        width: 100%;
+        margin-left: -18px;
+    }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+
+}

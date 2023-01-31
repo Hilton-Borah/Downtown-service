@@ -3,12 +3,17 @@ import { DrawerExample, DrawerExample1 } from "../Small/loginSignDrawer";
 import SearchLoc from "../Small/SearchBox";
 import { FaTwitterSquare } from "react-icons/fa";
 import { AiFillFacebook } from "react-icons/ai";
-import { SlSocialInstagram } from "react-icons/sl";
+import { SlLocationPin, SlSocialInstagram } from "react-icons/sl";
 import { IoLogoYoutube } from "react-icons/io";
 // import { TfiLinkedin } from "react-icons/tf";
-import { BsPinterest } from "react-icons/bs";
+import { BsPinterest, BsSearch } from "react-icons/bs";
 import { SliderImages, SliderImages1 } from "../Small/slider1";
 import { Outlet, Link } from "react-router-dom";
+import { Box, Button, Flex,Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import Slider1 from "./Slider1";
+import Slider2 from "./Slider2";
+import { getLocalData } from "../Utils/LocalStorage";
+import Footer from "./Footer";
 
 const HomePage = () => {
 
@@ -23,20 +28,28 @@ const HomePage = () => {
           />
           <div className={styles.register}>
             <div>Blog</div>
-            <div style={{ textDecorationLine: "underline" }}>
-              Register As A Professional
-            </div>
+            <Link to={"/adminpage"}><Button  colorScheme="trasparent"  mt="-8px">{getLocalData("email") ? "Admin panel" : null}</Button></Link>
             {/* <DrawerExample /> */}
             <DrawerExample1 />
           </div>
         </div>
         <div className={styles.searchBox}>
           <p style={{ fontSize: "14px" }}>Home / India</p>
-          <b style={{ fontSize: "50px", fontFamily: "sans-serif" }}>
+          <b className={styles.bigText}>
             Home services, on demand.
           </b>
           <div style={{ marginTop: "20px" }}>
             <SearchLoc />
+            {/* <Flex justifyContent={"center"} gap={"10px"}>
+              <InputGroup w={"15%"}>
+                <InputLeftAddon children={<SlLocationPin color="black"/>} />
+                <Input  bg={"white"} type='tel' placeholder='Current location' />
+              </InputGroup>
+              <InputGroup w={"30%"}>
+                <InputLeftAddon children={<Box><BsSearch color="black"/></Box>} />
+                <Input bg={"white"} type='tel' placeholder='Search for Society/Apartment' />
+              </InputGroup>
+            </Flex> */}
           </div>
           <p
             style={{
@@ -99,80 +112,68 @@ const HomePage = () => {
       </div>
 
       {/* Home sevrvices options */}
-      <b
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-        }}
-      >
+      <b className={styles.betHomePre}>
         Home Services
       </b>
       <div className={styles.homeServ}>
-      <Link to={"/electrician"}>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/e6869b7c0a59a2fb769daeaea048a49efe14aaa15334d61c8f54ef235254eeed/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37326431383935302e706e67"
-            alt="electrician"
-          />
-          <p>Electrician</p>
-        </div>
+        <Link to={"/electrician"}>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/e6869b7c0a59a2fb769daeaea048a49efe14aaa15334d61c8f54ef235254eeed/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37326431383935302e706e67"
+              alt="electrician"
+            />
+            <p>Electrician</p>
+          </div>
         </Link>
         <Link to={"/plumber"}>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/f0355b9be6dac41299e44ca258aaa471b1de075ddc82d83773c8fcbfc861d5e6/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36666261643337302e706e67"
-            alt="Plumber"
-          />
-          <p>Plumber</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/f0355b9be6dac41299e44ca258aaa471b1de075ddc82d83773c8fcbfc861d5e6/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36666261643337302e706e67"
+              alt="Plumber"
+            />
+            <p>Plumber</p>
+          </div>
         </Link>
         <Link>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/7a834d6d15a1d60da95e83574bee417d519118cd86b076afc32c3dc64e90e17a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313633313637393531353230362d6136393338392e706e67"
-            alt="Home paint"
-          />
-          <p>Home Painting</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/7a834d6d15a1d60da95e83574bee417d519118cd86b076afc32c3dc64e90e17a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313633313637393531353230362d6136393338392e706e67"
+              alt="Home paint"
+            />
+            <p>Home Painting</p>
+          </div>
         </Link>
         <Link>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/df116cda9e7f290dda56e57f2d2e9238fcf7162b4331582c39574570a74b1f58/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36623166353235302e706e67"
-            alt="clean & pest"
-          />
-          <p>Cleaning & Pest</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/df116cda9e7f290dda56e57f2d2e9238fcf7162b4331582c39574570a74b1f58/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f63617465676f726965732f63617465676f72795f76322f63617465676f72795f36623166353235302e706e67"
+              alt="clean & pest"
+            />
+            <p>Cleaning & Pest</p>
+          </div>
         </Link>
         <Link>
-        <div>
-          <img
-            src="https://camo.githubusercontent.com/1270641dc31d58150f341f5e8880e99d86fb82919ea028c7d3325359d2629f4a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313634313231333838363538382d3930613930332e706e67"
-            alt="disinfection"
-          />
-          <p>Disinfection</p>
-        </div>
+          <div>
+            <img
+              src="https://camo.githubusercontent.com/1270641dc31d58150f341f5e8880e99d86fb82919ea028c7d3325359d2629f4a/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f757262616e636c61702f696d6167652f75706c6f61642f715f6175746f2c665f6175746f2c666c5f70726f67726573736976653a73746565702c775f36342f745f686967685f7265735f74656d706c6174652f696d616765732f67726f7774682f686f6d652d73637265656e2f313634313231333838363538382d3930613930332e706e67"
+              alt="disinfection"
+            />
+            <p>Disinfection</p>
+          </div>
         </Link>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* Book now */}
       {/* slider-1 */}
       <div
-        style={{ marginBottom: "60px", marginRight: "60px" }}
-        className={styles.NewCatLaunch}
+        style={{ margin:"20px",marginBottom: "60px"}}
       >
-        <SliderImages />
+        <Slider1/>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* new category lauches */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+         className={styles.betHomePre}
       >
         New Category launches
       </p>
@@ -210,21 +211,16 @@ const HomePage = () => {
           <p></p>
         </div>
       </div>
-      <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
+      <div style={{ height: "17px", backgroundColor: "#f2f4f6" }} ></div>
       {/* Appliances */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+       className={styles.betHomePre}
       >
         Appliances
       </p>
       <p
         style={{
-          fontSize: "20px",
+          fontSize: "16px",
           fontFamily: "sans-serif",
           marginTop: "10px",
           color: "#757575",
@@ -262,30 +258,19 @@ const HomePage = () => {
       {/* Cleaning and pest control */}
       {/* slider-2 */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+        className={styles.betHomePre}
       >
         Cleaning & Pest Control
       </p>
       <div
-        style={{ marginBottom: "60px", marginRight: "60px" }}
-        className={styles.NewCatLaunch}
+        style={{margin:"20px",marginBottom: "60px" }}
       >
-        <SliderImages1 />
+        <Slider2/>
       </div>
       <div style={{ height: "17px", backgroundColor: "#f2f4f6" }}></div>
       {/* Home Repairs */}
       <p
-        style={{
-          fontSize: "35px",
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          marginTop: "30px",
-        }}
+   className={styles.betHomePre}
       >
         Home Repairs
       </p>
@@ -328,132 +313,7 @@ const HomePage = () => {
           alt="Policy box"
         />
       </div>
-      <footer className={styles.footer}>
-        <div style={{ margin: "auto" }}>
-          <div>
-            <p>About us</p>
-            <p>UC Impact</p>
-            <p>Term & Conditions</p>
-            <p>Privacy Policy</p>
-            <p>Interest-Based Advertising</p>
-            <p>Anti Discrimination Policy</p>
-            <p>Partner Welfare Policy</p>
-            <p>Blog</p>
-            <p>Reviews</p>
-            <p>Near Me</p>
-            <p>Careers</p>
-            <p>Gift Cards</p>
-            <p>Contact Us</p>
-            <p>Quick Links</p>
-          </div>
-        </div>
-        <hr style={{ margin: "20px auto" }} />
-        <p style={{ display: "flex", color: "white" }}>Serving in</p>
-        <div>
-          <div className={styles.cnty}>USA</div>
-          <div>
-            <p>Austin</p>
-            <p>Dallas</p>
-            <p>New York City</p>
-          </div>
-          <div className={styles.cnty}>IND</div>
-          <div>
-            <p>Agra</p>
-            <p>Ahmedabad</p>
-            <p>Alwar</p>
-            <p>Amritsar</p>
-            <p>Aurangabad</p>
-            <p>Banglore</p>
-            <p>Bhopal</p>
-            <p>Bhubaneshwar</p>
-            <p>Chandigarh Tricity</p>
-            <p>Chennai</p>
-            <p>Coimbatore</p>
-            <p>Dehradun</p>
-            <p>Delhi NCR</p>
-            <p>Guwahati</p>
-            <p>Haidarabad</p>
-            <p>Jamshedpur</p>
-            <p>Kakinada</p>
-            <p>Kochi</p>
-            <p>Kolkata</p>
-            <p>Kota</p>
-            <p>Lucknow</p>
-            <p>Madurai</p>
-            <p>Meerut</p>
-            <p>Mumbai</p>
-            <p>Nagpur</p>
-            <p>Nashik</p>
-            <p>Panipat</p>
-            <p>Patna</p>
-            <p>Prayagraj</p>
-            <p>Pune</p>
-            <p>Ranchi</p>
-            <p>Surat</p>
-            <p>Thirivananthpuram</p>
-            <p>Udaipur</p>
-            <p>Vadodara</p>
-            <p>Varanasi</p>
-            <p>Vijaywada</p>
-            <p>Visakhapatnam</p>
-          </div>
-          <div className={styles.cnty}>UAE</div>
-          <div>
-            <p>Abu Dhabi</p>
-            <p>Dubai</p>
-            <p>Sarjah</p>
-          </div>
-          <div className={styles.cnty}>AUS</div>
-          <div>
-            <p>Melbourne</p>
-            <p>Sydney</p>
-          </div>
-          <div className={styles.cnty}>SGP</div>
-          <div>
-            <p>Singapore</p>
-          </div>
-          <div className={styles.cnty}>KSA</div>
-          <div>
-            <p>Jeddah</p>
-            <p>Riyadh</p>
-          </div>
-        </div>
-        <hr style={{ margin: "20px auto" }} />
-        <div className={styles.social}>
-          <div>
-            <img
-              style={{ width: "70px", cursor: "pointer" }}
-              src="https://user-images.githubusercontent.com/105915325/201094672-f7cd637a-98b8-4f0e-b0f4-78b4890e4976.png"
-              alt="site Logo"
-            />
-          </div>
-          <div>
-            <p>@2014-22 UrbanClap Technologies India Pvt.Ltd.</p>
-          </div>
-          <div style={{ fontSize: "20px", cursor: "pointer" }}>
-            <FaTwitterSquare />
-            <AiFillFacebook />
-            <SlSocialInstagram />
-            <IoLogoYoutube />
-            {/* <TfiLinkedin/> */}
-            <BsPinterest />
-          </div>
-          <div>
-            <img
-              style={{ width: "170px", height: "60px", cursor: "pointer" }}
-              src="https://camo.githubusercontent.com/403ae25ba180c2f8af00f39d9c6699f3d4a5fe7edd735e838e2584691449d681/68747470733a2f2f696d616765732e757262616e636c61702e636f6d2f696d6167652f75706c6f61642f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37663930376562302e706e67"
-              alt="google Logo"
-            />
-          </div>
-          <div>
-            <img
-              style={{ width: "170px", height: "60px", cursor: "pointer" }}
-              src="https://camo.githubusercontent.com/53975be01f891f87111e50f4ff0d3aefecdd9484b9996357a4cf589627f1cdb3/68747470733a2f2f696d616765732e757262616e636c61702e636f6d2f696d6167652f75706c6f61642f63617465676f726965732f63617465676f72795f76322f63617465676f72795f37663734316431302e706e67"
-              alt="Apple Logo"
-            />
-          </div>
-        </div>
-      </footer>
+        <Footer/>
     </>
   );
 };
