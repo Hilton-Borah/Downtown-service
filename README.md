@@ -1,4 +1,4 @@
-Downtown service is a site who provides various types of sevices to the user like plumber, electricians and also other home services. To see this webiste live please click on the link :- https://downtown-service.vercel.app/
+Downtown service is a site who provides various types of sevices to the user like plumber, electricians and also other home services. To see this webiste live please click on the link :- https://downtown-service-hilton-borah.vercel.app/
 
 <h1>Teammates:-</h1>
 
