@@ -7,6 +7,8 @@ import {
     CloseButton,
   } from "@chakra-ui/react";
   import { useDisclosure } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+  import "./Success.css"
   
   function Success({setData}) {
     const {
@@ -22,21 +24,10 @@ import {
   
     return (
       isVisible && (
-        <Alert
+        <Alert className="Alert"
           status="success"
           variant="subtle"
           flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          height="200px"
-          width="180%"
-          ml="-18%"
-          mt="-40px"
-          bg="#8aff9d"
-          border="2px solid"
-          borderRadius="10px"
-          color="darkgreen"
         >
           <AlertIcon boxSize="40px" color="darkgreen" mr={0} />
           <AlertTitle mt={4} mb={1} fontSize="lg">
@@ -46,6 +37,13 @@ import {
             Thanks you. Our team will get back to you
             soon.
           </AlertDescription>
+          <Link to={"/"}><div style={{
+            width:"100%",
+            marginTop:"20px",
+            borderBottom:"1px solid blue"
+          }}>
+          Go to Homepage
+        </div></Link>
           <CloseButton
             alignSelf="flex-end"
             position="relative"

@@ -63,6 +63,10 @@
     border-bottom: 3px solid gray;
 }
 
+/* .footer{
+    margin-top: 500px;
+} */
+
 
 @media screen and (min-width: 100px) and (max-width: 767px){
     .rightContainer{

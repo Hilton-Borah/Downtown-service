@@ -18,11 +18,8 @@ const Payment = () => {
       <div className="selectPay">
         <div  className="b">
           <div>Select payment method</div>
-          <p className="p">Amount to pay:{`Rs ${total}`}</p>
+          <p className="p">Amount to pay:{`Rs ${total+60+39}`}</p>
         </div>
-        <Link to={"/"}><div className="homepagelink">
-          Go to Homepage
-        </div></Link>
       </div>
       {/* to cover fixed box */}
       <div style={{ width: "40%", height: "76px", color: "#e5e5e5" }}>

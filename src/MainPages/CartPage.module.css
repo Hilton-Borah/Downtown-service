@@ -10,16 +10,16 @@
 }
 .leftandRightBox{
     width: 75%;
-    height: 700px;
+    /* height: 700px; */
+    display: flex;
     margin: auto;
     /* border: 1px solid lightgrey; */
-    display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 40px;
 }
 .eachSideBox{
+    width: 55%;
     height: 650px;
-    /* border: 1px solid green; */
 }
 .leftPriceBox{
     border: 8px solid rgb(244, 243, 243);
@@ -36,4 +36,51 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px 20px 10px 20px;
+}
+
+
+
+@media screen and (min-width: 100px) and (max-width: 767px){
+    .leftandRightBox{
+        width: 98%;
+
+        display: block;
+    }
+
+    .eachSideBox{
+
+        width: 95%;
+        margin-bottom: -200px;
+    }
+
+    .Image{
+        display: none;
+    }
+
+    .albal{
+        margin-top: -1000px;
+        border: 1px solid;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .leftandRightBox{
+        width: 98%;
+        display: block;
+    }
+
+    .eachSideBox{
+        display: block;
+        width: 95%;
+        margin-bottom: -200px;
+        /* height: 650px; */
+    }
+
+    .Image{
+        display: none;
+    }
+
+    .albal{
+        margin-top: -1000px;
+        
+    }
 }

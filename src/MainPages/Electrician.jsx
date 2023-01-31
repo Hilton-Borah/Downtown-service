@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VStack, Box, HStack, Button, Heading, Text, Spinner, useToast } from "@chakra-ui/react"
+import { VStack, Box, HStack, Button, Heading, Text, Spinner, useToast, Flex, Menu, MenuButton, MenuList, Divider, MenuItem } from "@chakra-ui/react"
 import { AspectRatio } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import styles from "./Electrician.module.css"
@@ -11,6 +11,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
 import { FaLeaf } from "react-icons/fa";
 import axios from "axios";
+import { IoIosArrowDown } from "react-icons/io";
+import Footer from "./Footer";
 // import { store } from "../../Redux/store";
 
 const Electricians = () => {
@@ -28,7 +30,7 @@ const Electricians = () => {
 
     useEffect(() => {
         dispatch(getElectricianData)
-        
+
         axios.get("https://tame-gold-cricket-yoke.cyclic.app/cart")
             .then((res) => {
                 setLength(res.data.length)
@@ -41,18 +43,18 @@ const Electricians = () => {
     const handleAddPrice = (item) => {
         axios.post("https://tame-gold-cricket-yoke.cyclic.app/cart/add", item)
             .then((res) => {
-                if (res.data==="Item already in your cart"){
+                if (res.data === "Item already in your cart") {
                     toast({
                         title: `Item already in your cart`,
                         status: "error",
                         isClosable: true,
-                      })
-                }else {
+                    })
+                } else {
                     toast({
                         title: `Service added to cart`,
                         status: "success",
                         isClosable: true,
-                      })
+                    })
                 }
             }).catch((err) => {
                 console.log(err)
@@ -77,7 +79,27 @@ const Electricians = () => {
         window.location.reload()
     }
 
+    const username = getLocalData("name")
+
+    const handleLogout = () => {
+        localStorage.clear()
+        navigate("/")
+    }
+
     return <div>
+        <Flex className='hNav'>
+            <Link to={"/"}><Image className='hLogo' src='https://user-images.githubusercontent.com/105915325/201094672-f7cd637a-98b8-4f0e-b0f4-78b4890e4976.png' /></Link>
+            <Menu>
+                <MenuButton variant={"unstyled"} as={Button} rightIcon={<IoIosArrowDown />}>
+                    My Profile
+                </MenuButton>
+                <MenuList>
+                    <MenuItem>{username}</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </MenuList>
+            </Menu>
+        </Flex>
+        <Divider border={"1px solid lightgray"} width={"95%"} margin={"auto"} />
         <VStack spacing="25px">
             <Box w="90%" h="200px"
             // border="1px solid green"
@@ -177,7 +199,7 @@ const Electricians = () => {
                 <Box mb="10px" mt="20px" w="100%" h="1px" bg="lightgrey"></Box>
                 <Box
                     className={styles.mainBox}
-                    
+
                 >
                     {/* left side */}
                     <Box w={{ base: '100%', sm: '90%', md: '80%' }} h="400px">
@@ -263,8 +285,8 @@ const Electricians = () => {
                                 <Text p="5px" color="green">Add ₹62 more to save on Min Order Fee</Text>
                             </Box>
                             <Box display="flex" p="10px" mt={"20px"} justifyContent="space-between">
-                            <Text fontSize="16px">{datalength} service is in your cart</Text>
-                                <Link to={"/cartpage"} ><Button disabled={count === 0} w="100px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
+                                {/* <Text fontSize="16px">{datalength} service is in your cart</Text> */}
+                                <Link to={"/cartpage"} ><Button disabled={count === 0} w="300px" h="40px" mt="-10px" color="white" bg="purple.500">View Cart</Button></Link>
                             </Box>
                         </Box>
                     </Box>
@@ -272,7 +294,10 @@ const Electricians = () => {
                 {/* cost */}
             </Box>
         </VStack>
-        {/* <Box>Next</Box> */}
+        {/* <Box className={"footer"}>
+
+        <Footer/>
+        </Box> */}
     </div>
 }
 export default Electricians;

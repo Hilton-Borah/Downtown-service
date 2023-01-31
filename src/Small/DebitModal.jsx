@@ -15,9 +15,11 @@ import {
   PinInput,
   PinInputField,
   HStack,
+  Flex,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { Success } from "./Success";
+import { useState } from "react";
 
 //   import "../payment.css"
 
@@ -28,18 +30,20 @@ function DebitModal({ children }) {
   const [cardNum, setCardNum] = React.useState("");
   const [expiry, setExpiry] = React.useState("");
   const [cvv, setCvv] = React.useState("");
-
+  const [pin,setPin] = useState("")
   const [otp, setOtp] = React.useState("");
 
-  console.log(otp);
+  let x;
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
 
   const getOtp = () => {
-    if (cvv != "" && expiry != "" && cardNum != "") {
+    if(cvv.length!==3 || cardNum.length!==16){
+      alert("You filled invalid details")
+    } else if (cvv != "" && expiry != "" && cardNum != "") {
       setTimeout(() => {
-        let x = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+        x = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
         alert(`Your OTP is ${x}`);
         setOtp(x);
       }, 2000);
@@ -48,8 +52,13 @@ function DebitModal({ children }) {
     }
   };
 
+  const handlePin=(e)=>{
+    setPin(bag=>bag+e.target.value)
+  }
+
   const payDone = () => {
-    if (otp!="") {
+    console.log(otp,pin)
+    if (otp!="" && otp===Number(pin)) {
       setTimeout(() => {
         console.log(otp);
         onClose();
@@ -59,8 +68,12 @@ function DebitModal({ children }) {
     }
     else{
         alert("Please fill correct OTP !")
+        setPin(otp)
     }
   };
+
+
+
 
   return (
     <>
@@ -78,28 +91,30 @@ function DebitModal({ children }) {
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
-              {/* <FormLabel>First name</FormLabel> */}
+              <FormLabel>Card Details</FormLabel>
               <Input
                 ref={initialRef}
-                type="number"
+                type="card"
                 value={cardNum}
-                placeholder="card number"
+                placeholder="0000-0000-0000-0000"
                 onChange={(e) => setCardNum(e.target.value)}
               />
             </FormControl>
-
-            <FormControl mt={4}>
-              {/* <FormLabel>Last name</FormLabel> */}
+            {/* <Flex w={"500px"}>
+              <FormLabel>Expiry Date</FormLabel>
+              <FormLabel>CVV</FormLabel>
+            </Flex> */}
+            <FormControl mt={4} display={"flex"}>
               <Input
-                w="100px"
+                w="160px"
                 mr="10px"
-                type="number"
+                type="Date"
                 value={expiry}
                 placeholder="MM/YY"
                 onChange={(e) => setExpiry(e.target.value)}
               />
               <Input
-                w="100px"
+                w="160px"
                 type="number"
                 value={cvv}
                 placeholder="CVV"
@@ -116,10 +131,10 @@ function DebitModal({ children }) {
             </Button>
             <HStack mt="10px">
               <PinInput type="number">
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
-                <PinInputField />
+                <PinInputField value={pin} onChange={handlePin}/>
+                <PinInputField  value={pin} onChange={handlePin}/>
+                <PinInputField  value={pin} onChange={handlePin}/>
+                <PinInputField  value={pin} onChange={handlePin}/>
               </PinInput>
             </HStack>
           </ModalBody>

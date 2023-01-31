@@ -16,7 +16,7 @@ import React, { useState } from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import axios from "axios";
 import { getLocalData, saveLocalData } from "../Utils/LocalStorage";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAuth } from "../Redux/productReducer/action";
 import { getRegistration, resendOtp, verifyOtp } from "../Redux/Authreducer/action";
@@ -72,25 +72,30 @@ function DrawerExample1() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data)
-    dispatch(getRegistration(data))
-      .then((res) => {
-        console.log(res)
-        if (res.payload.status === "PENDING") {
-          saveLocalData("userID", res.payload.data.userID)
-          toast({
-            title: 'Otp sent successfully',
-            description: "Please check your email",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          })
-          setPin(true)
-        }
-      }).catch((err) => {
-        console.log(err)
-      })
-    setSubmit(!submit)
+    if (email==="downtownservice@gmail.com"){
+      saveLocalData("email",email)
+      navigate("/adminpage")
+    } else {
+      console.log(data)
+      dispatch(getRegistration(data))
+        .then((res) => {
+          console.log(res)
+          if (res.payload.status === "PENDING") {
+            saveLocalData("userID", res.payload.data.userID)
+            toast({
+              title: 'Otp sent successfully',
+              description: "Please check your email",
+              status: "success",
+              duration: 9000,
+              isClosable: true,
+            })
+            setPin(true)
+          }
+        }).catch((err) => {
+          console.log(err)
+        })
+      setSubmit(!submit)
+    }
   }
 
   const [otp, setOtp] = useState("")
@@ -179,6 +184,7 @@ function DrawerExample1() {
       <Button ref={btnRef} colorScheme="trasparent" onClick={() => onOpen()} mt="-8px">
         {getLocalData("name") ? getLocalData("name") : "Login/Sign Up"}
       </Button>
+     
       {/* {isAuth ? <b onClick={handleLogout} style={{ cursor: "pointer" }}>Logout</b> : null} */}
       {/* {emailId==="hiltonborah123@gmail.com"?<b onClick={handleAdmin} style={{ cursor: "pointer" }}>Admin dashboard</b> : null} */}
       <Drawer
