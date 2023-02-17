@@ -61,13 +61,13 @@ userRotes.post("/register", (req, res) => {
         userModel.find({ email }).then((result) => {
             // console.log(result)
             if (result.length>0) {
-                console.log("Haiii1")
-                // sendOTPVerificationEmail({ _id, email, name }, res)
+                console.log(result)
+                sendOTPVerificationEmail(result[0], res)
                 // return
-                res.json({
-                    status: "FAILED",
-                    message: "User already exist, please login."
-                })
+                // res.json({
+                //     status: "FAILED",
+                //     message: "User already exist, please login."
+                // })
             } 
             else {
                 const newUser = new userModel({

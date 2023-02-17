@@ -90,7 +90,7 @@ function DrawerExample1() {
               isClosable: true,
             })
             setPin(true)
-          }
+          } 
         }).catch((err) => {
           console.log(err)
         })
