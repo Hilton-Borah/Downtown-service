@@ -82,7 +82,7 @@ const SearchLoc = () => {
             >
               <SlLocationPin />
               {
-                location && location.name ? location.name : "Location"
+                text ? text : location.name
               }
             </Button>
           </div>
